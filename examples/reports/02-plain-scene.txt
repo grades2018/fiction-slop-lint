@@ -1,0 +1,11 @@
+fiction-slop-lint 0.1.0 - a style linter for fiction. Not an AI detector.
+
+examples/02-plain-scene.md  (335 words, 30 sentences, 0 findings)
+  no findings
+
+Summary
+  1 file(s), 335 words, 0 findings
+  errors 0, warnings 0, info 0
+  warnings+errors per 1000 words: 0.0
+
+Findings are style hints, not proof of how a text was written. Expect false positives.

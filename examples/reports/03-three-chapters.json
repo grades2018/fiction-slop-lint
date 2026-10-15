@@ -1,0 +1,215 @@
+{
+  "tool": "fiction-slop-lint",
+  "version": "0.1.0",
+  "disclaimer": "Style linter only. Findings are hints, not proof of how a text was written.",
+  "files": [
+    {
+      "path": "examples/03-three-chapters.md",
+      "words": 304,
+      "sentences": 42,
+      "paragraphs": 6,
+      "chapters": [
+        "Chapter 1",
+        "Chapter 2",
+        "Chapter 3"
+      ],
+      "findings": [
+        {
+          "rule": "rhythm-paragraph-monotony",
+          "category": "rhythm",
+          "severity": "info",
+          "message": "Paragraphs are nearly the same length for a long stretch.",
+          "file": "examples/03-three-chapters.md",
+          "line": 3,
+          "column": 1,
+          "offset": 13,
+          "end": 14,
+          "match": "T",
+          "context": "The harbor was quiet when Nora",
+          "suggestion": "Let paragraph length follow the action.",
+          "count": 6,
+          "detail": "6 paragraphs averaging 50.7 words with little variation (cv 0.09)"
+        },
+        {
+          "rule": "rep-sentence-opener-share",
+          "category": "repetition",
+          "severity": "info",
+          "message": "One word opens a large share of the sentences.",
+          "file": "examples/03-three-chapters.md",
+          "line": 3,
+          "column": 41,
+          "offset": 53,
+          "end": 56,
+          "match": "She",
+          "context": "was quiet when Nora arrived. She stood at the end of the pier",
+          "suggestion": "Vary how sentences begin. First person 'I' narration naturally scores high.",
+          "count": 23,
+          "rate": 54.8,
+          "limit": 25.0,
+          "detail": "'she' opens 23 of 42 sentences (55%)"
+        },
+        {
+          "rule": "rep-sentence-openers-run",
+          "category": "repetition",
+          "severity": "warn",
+          "message": "Several sentences in a row open with the same word.",
+          "file": "examples/03-three-chapters.md",
+          "line": 3,
+          "column": 41,
+          "offset": 53,
+          "end": 56,
+          "match": "She",
+          "context": "was quiet when Nora arrived. She stood at the end of the pier",
+          "suggestion": "Combine sentences or change a start.",
+          "count": 7,
+          "detail": "7 sentences in a row start with 'She'"
+        },
+        {
+          "rule": "rhythm-sentence-monotony",
+          "category": "rhythm",
+          "severity": "warn",
+          "message": "Sentence lengths barely vary over a long stretch.",
+          "file": "examples/03-three-chapters.md",
+          "line": 5,
+          "column": 123,
+          "offset": 421,
+          "end": 422,
+          "match": "S",
+          "context": "acher,\" he said. Nora nodded. She did not say anything else.",
+          "suggestion": "Mix short and long sentences.",
+          "count": 10,
+          "detail": "10 sentences averaging 7.2 words with little variation (cv 0.30)"
+        },
+        {
+          "rule": "rep-sentence-openers-run",
+          "category": "repetition",
+          "severity": "warn",
+          "message": "Several sentences in a row open with the same word.",
+          "file": "examples/03-three-chapters.md",
+          "line": 9,
+          "column": 126,
+          "offset": 645,
+          "end": 648,
+          "match": "She",
+          "context": "ed the door to the classroom. She put her bag on the desk. She",
+          "suggestion": "Combine sentences or change a start.",
+          "count": 4,
+          "detail": "4 sentences in a row start with 'She'"
+        },
+        {
+          "rule": "rep-echo-words",
+          "category": "repetition",
+          "severity": "info",
+          "message": "Same uncommon word three times in a short stretch.",
+          "file": "examples/03-three-chapters.md",
+          "line": 9,
+          "column": 192,
+          "offset": 711,
+          "end": 717,
+          "match": "looked",
+          "context": "te her name on the board. She looked at the empty chairs. She wond",
+          "suggestion": "Swap one for another word or restructure.",
+          "count": 3,
+          "detail": "'looked' used 3 times within 50 words"
+        },
+        {
+          "rule": "rep-sentence-openers-run",
+          "category": "repetition",
+          "severity": "warn",
+          "message": "Several sentences in a row open with the same word.",
+          "file": "examples/03-three-chapters.md",
+          "line": 15,
+          "column": 101,
+          "offset": 1142,
+          "end": 1145,
+          "match": "She",
+          "context": "orning and watched the boats. She knew the names of the fisherm",
+          "suggestion": "Combine sentences or change a start.",
+          "count": 5,
+          "detail": "5 sentences in a row start with 'She'"
+        }
+      ]
+    }
+  ],
+  "corpus": [
+    {
+      "rule": "rep-ngram-phrases",
+      "category": "repetition",
+      "severity": "warn",
+      "message": "Phrase repeats often or in several chapters.",
+      "file": "examples/03-three-chapters.md",
+      "line": 5,
+      "column": 83,
+      "offset": 381,
+      "end": 399,
+      "match": "the new teacher,\"",
+      "context": "her for a long time. \"You're the new teacher,\" he said. Nora nodded. She did",
+      "suggestion": "Check whether the repetition is deliberate.",
+      "count": 3,
+      "scope": "corpus",
+      "detail": "'the new teacher he' appears 3 times in 3 chapter(s)",
+      "phrase": "the new teacher he",
+      "locations": [
+        {
+          "file": "examples/03-three-chapters.md",
+          "line": 5
+        },
+        {
+          "file": "examples/03-three-chapters.md",
+          "line": 11
+        },
+        {
+          "file": "examples/03-three-chapters.md",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "rule": "rep-ngram-phrases",
+      "category": "repetition",
+      "severity": "warn",
+      "message": "Phrase repeats often or in several chapters.",
+      "file": "examples/03-three-chapters.md",
+      "line": 5,
+      "column": 131,
+      "offset": 429,
+      "end": 450,
+      "match": "not say anything else",
+      "context": "he said. Nora nodded. She did not say anything else. She drank the coffee. She fe",
+      "suggestion": "Check whether the repetition is deliberate.",
+      "count": 3,
+      "scope": "corpus",
+      "detail": "'not say anything else' appears 3 times in 3 chapter(s)",
+      "phrase": "not say anything else",
+      "locations": [
+        {
+          "file": "examples/03-three-chapters.md",
+          "line": 5
+        },
+        {
+          "file": "examples/03-three-chapters.md",
+          "line": 11
+        },
+        {
+          "file": "examples/03-three-chapters.md",
+          "line": 17
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "files": 1,
+    "words": 304,
+    "findings": 9,
+    "by_severity": {
+      "error": 0,
+      "warn": 6,
+      "info": 3
+    },
+    "by_category": {
+      "repetition": 7,
+      "rhythm": 2
+    },
+    "warn_and_error_per_1000_words": 19.74
+  }
+}

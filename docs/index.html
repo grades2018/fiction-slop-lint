@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<title>fiction-slop-lint: a style linter for fiction manuscripts</title>
+<meta name="description" content="Offline style linter for fiction. Flags cliches, overused phrases, repetition and rhythm habits. Runs in your browser; your text never leaves it.">
+<style>
+  :root { --bg:#fbfaf7; --fg:#1d1b18; --muted:#6a655d; --card:#fff; --line:#e3ded4; --accent:#3b5b7a; --warn:#b4570a; --err:#b3261e; --info:#5c6b7a; --mark:#ffe9a8; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#151515; --fg:#ece8e1; --muted:#a39d92; --card:#1f1f1f; --line:#34322e; --accent:#8fb4d9; --warn:#f0a35e; --err:#ff8a80; --info:#9aa8b6; --mark:#5a4a14; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; }
+  h2 { font-size: 1.1rem; margin: 28px 0 8px; }
+  p.lead { margin: 0 0 12px; color: var(--muted); }
+  .note { background: var(--card); border:1px solid var(--line); border-left:4px solid var(--accent); padding:10px 14px; border-radius:6px; margin:12px 0; font-size:.93rem; }
+  textarea { width:100%; min-height: 220px; padding:12px; font: 15px/1.5 Georgia, "Times New Roman", serif; background:var(--card); color:var(--fg); border:1px solid var(--line); border-radius:6px; resize: vertical; }
+  .row { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:10px 0; }
+  button { font:inherit; padding:8px 16px; border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+  button.secondary { background:transparent; color:var(--accent); }
+  button:disabled { opacity:.5; cursor:default; }
+  label { font-size:.92rem; color:var(--muted); }
+  select, input[type=file] { font:inherit; }
+  #summary { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+  .pill { background:var(--card); border:1px solid var(--line); border-radius:999px; padding:2px 12px; font-size:.9rem; }
+  .pill.warn { border-color:var(--warn); color:var(--warn); } .pill.error { border-color:var(--err); color:var(--err); }
+  ul#findings { list-style:none; padding:0; margin:0; }
+  ul#findings li { background:var(--card); border:1px solid var(--line); border-radius:6px; padding:8px 12px; margin:6px 0; }
+  .sev { font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; margin-right:6px; }
+  .sev.warn { color:var(--warn); } .sev.error { color:var(--err); } .sev.info { color:var(--info); }
+  .loc { color:var(--muted); font-variant-numeric: tabular-nums; margin-right:6px; }
+  .rid { font-family: ui-monospace, Menlo, Consolas, monospace; font-size:.82rem; color:var(--muted); }
+  .ctx { color:var(--muted); font-family: Georgia, serif; font-size:.92rem; margin-top:2px; }
+  .tip { font-size:.88rem; color:var(--muted); }
+  #preview { white-space: pre-wrap; background:var(--card); border:1px solid var(--line); border-radius:6px; padding:12px; font:15px/1.6 Georgia, serif; max-height: 420px; overflow:auto; }
+  mark { background:var(--mark); color:inherit; border-radius:3px; padding:0 1px; }
+  mark.error { outline:1px solid var(--err); }
+  footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--line); font-size:.88rem; color:var(--muted); }
+  a { color:var(--accent); }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>fiction-slop-lint</h1>
+  <p class="lead">A style linter for fiction manuscripts. Paste a scene or load a file, and see cliches, overused phrases, repetition and rhythm habits flagged.</p>
+  <div class="note"><strong>Private by design.</strong> The check runs in your browser with the same rules file the command line tool uses. Your text is not uploaded, stored or tracked. This is a style linter, not an AI detector: a hit means "worth a look", never proof of how text was written.</div>
+
+  <textarea id="text" spellcheck="false" placeholder="Paste your scene or chapter here (Markdown or plain text)..."></textarea>
+  <div class="row">
+    <button id="run">Check text</button>
+    <label>or load files <input id="files" type="file" accept=".md,.markdown,.txt,text/plain,text/markdown" multiple></label>
+    <button id="sample" class="secondary" type="button">Try a sample</button>
+    <button id="download" class="secondary" type="button" disabled>Download JSON report</button>
+  </div>
+  <div class="row">
+    <label>Show <select id="minsev"><option value="info">all findings</option><option value="warn">warnings and errors</option><option value="error">errors only</option></select></label>
+    <label>Category <select id="cat"><option value="">all</option></select></label>
+    <label class="hidden" id="filewrap">File <select id="filesel"></select></label>
+  </div>
+  <p id="status" class="tip" role="status"></p>
+
+  <div id="results" class="hidden">
+    <h2>Summary</h2>
+    <div id="summary"></div>
+    <h2>Findings</h2>
+    <ul id="findings"></ul>
+    <h2>Text with highlights</h2>
+    <div id="preview" aria-label="Text with highlighted findings"></div>
+  </div>
+
+  <h2>About</h2>
+  <p>Rules live in a single human-editable <a href="rules.json">rules.json</a>. See the <a href="https://github.com/grades2018/fiction-slop-lint">repository</a> for the command line tool (Python, no dependencies), the rule list and limitations. Expect false positives: a flagged cliche may be exactly what your character would say.</p>
+  <p>A note on publishing: Amazon KDP requires authors to disclose AI-generated text when they publish. This tool does not change that duty and does not help anyone avoid it. Read KDP's current content guidelines for the exact wording.</p>
+  <footer>
+    MIT licensed. Built by the team behind <a href="https://www.imagineyourbook.com/">ImagineYourBook</a>. Want a full first draft? ImagineYourBook drafts complete manuscripts.
+  </footer>
+</main>
+<script src="slop.js"></script>
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var rules = null, report = null, sources = [], current = 0;
+  var SAMPLE = "Elara walked into the village of Willowbrook on a cold, gray morning. The air was thick with tension, and a shiver ran down her spine. She let out a breath she didn't know she was holding.\n\n\"We need to talk,\" said Kael, barely above a whisper.\n\nHer heart pounded in her chest. Little did she know, the letter in his coat would change everything. She couldn't help but smile.\n";
+
+  function setStatus(t) { $("status").textContent = t; }
+
+  fetch("rules.json").then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); }).then(function (j) {
+    rules = j;
+    var sel = $("cat");
+    Object.keys(rules.categories).forEach(function (k) {
+      var o = document.createElement("option"); o.value = k; o.textContent = k + " - " + rules.categories[k]; sel.appendChild(o);
+    });
+    setStatus(rules.rules.length + " rules loaded.");
+    if (location.hash === "#sample") $("sample").click();
+  }).catch(function (e) {
+    setStatus("Could not load rules.json (" + e.message + "). If you opened this page from disk, serve the folder instead, e.g. python3 -m http.server in docs/.");
+  });
+
+  $("sample").addEventListener("click", function () { $("text").value = SAMPLE; run([{ path: "sample.txt", text: SAMPLE }]); });
+  $("run").addEventListener("click", function () {
+    var t = $("text").value;
+    if (!t.trim()) { setStatus("Paste some text first, or load a file."); return; }
+    run([{ path: "pasted text", text: t }]);
+  });
+  $("files").addEventListener("change", function (ev) {
+    var list = Array.prototype.slice.call(ev.target.files);
+    if (!list.length) return;
+    list.sort(function (a, b) { return a.name.localeCompare(b.name, undefined, { numeric: true }); });
+    Promise.all(list.map(function (f) {
+      return new Promise(function (res, rej) {
+        var fr = new FileReader();
+        fr.onload = function () { res({ path: f.name, text: String(fr.result) }); };
+        fr.onerror = function () { rej(fr.error); };
+        fr.readAsText(f);
+      });
+    })).then(function (files) {
+      if (files.length === 1) $("text").value = files[0].text;
+      run(files);
+    }).catch(function (e) { setStatus("Could not read the file: " + e); });
+  });
+  $("minsev").addEventListener("change", function () { if (sources.length) run(sources); });
+  $("cat").addEventListener("change", function () { if (sources.length) run(sources); });
+  $("filesel").addEventListener("change", function () { current = Number($("filesel").value); render(); });
+  $("download").addEventListener("click", function () {
+    if (!report) return;
+    var blob = new Blob([JSON.stringify(report, null, 2)], { type: "application/json" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = "fiction-slop-lint-report.json";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  function run(files) {
+    if (!rules) { setStatus("Rules are not loaded yet."); return; }
+    sources = files;
+    var t0 = Date.now();
+    report = SlopLint.analyzeFiles(files, rules, { minSeverity: $("minsev").value, categories: $("cat").value ? [$("cat").value] : [] });
+    current = 0;
+    var fs = $("filesel");
+    fs.textContent = "";
+    files.forEach(function (f, i) { var o = document.createElement("option"); o.value = i; o.textContent = f.path; fs.appendChild(o); });
+    $("filewrap").classList.toggle("hidden", files.length < 2);
+    $("download").disabled = false;
+    setStatus("Checked " + report.summary.words + " words in " + (Date.now() - t0) + " ms, locally.");
+    render();
+  }
+
+  function pill(text, cls) { var s = document.createElement("span"); s.className = "pill " + (cls || ""); s.textContent = text; return s; }
+
+  function render() {
+    $("results").classList.remove("hidden");
+    var s = report.summary, sum = $("summary");
+    sum.textContent = "";
+    sum.appendChild(pill(s.words + " words"));
+    sum.appendChild(pill(s.by_severity.error + " errors", s.by_severity.error ? "error" : ""));
+    sum.appendChild(pill(s.by_severity.warn + " warnings", s.by_severity.warn ? "warn" : ""));
+    sum.appendChild(pill(s.by_severity.info + " info"));
+    sum.appendChild(pill(s.warn_and_error_per_1000_words + " warnings+errors per 1000 words"));
+
+    var fr = report.files[current], list = $("findings");
+    list.textContent = "";
+    var items = fr.findings.slice();
+    if (current === 0) report.corpus.forEach(function (f) { items.push(f); });
+    if (!items.length) { var li = document.createElement("li"); li.textContent = "No findings. That is not a quality verdict, only that none of these rules fired."; list.appendChild(li); }
+    items.forEach(function (f) {
+      var li = document.createElement("li");
+      var head = document.createElement("div");
+      var sev = document.createElement("span"); sev.className = "sev " + f.severity; sev.textContent = f.severity;
+      var loc = document.createElement("span"); loc.className = "loc"; loc.textContent = f.line === null ? "file" : f.line + ":" + f.column;
+      var rid = document.createElement("span"); rid.className = "rid"; rid.textContent = f.rule;
+      head.appendChild(sev); head.appendChild(loc); head.appendChild(rid);
+      li.appendChild(head);
+      var msg = document.createElement("div"); msg.textContent = (f.detail ? f.detail + ". " : "") + f.message; li.appendChild(msg);
+      if (f.context && !f.detail) { var c = document.createElement("div"); c.className = "ctx"; c.textContent = "\u2026" + f.context + "\u2026"; li.appendChild(c); }
+      if (f.suggestion) { var t = document.createElement("div"); t.className = "tip"; t.textContent = "Tip: " + f.suggestion; li.appendChild(t); }
+      list.appendChild(li);
+    });
+
+    var display = sources[current].text.replace(/\r\n?/g, "\n");
+    var spans = fr.findings.filter(function (f) { return f.offset !== null && f.end !== null && f.end > f.offset; })
+      .sort(function (a, b) { return a.offset - b.offset; });
+    var pv = $("preview"); pv.textContent = "";
+    var MAX = 200000, pos = 0;
+    var shown = display.length > MAX ? display.slice(0, MAX) : display;
+    spans.forEach(function (f) {
+      if (f.offset < pos || f.end > shown.length) return;
+      pv.appendChild(document.createTextNode(shown.slice(pos, f.offset)));
+      var m = document.createElement("mark"); m.className = f.severity; m.title = f.rule + ": " + f.message;
+      m.textContent = shown.slice(f.offset, f.end); pv.appendChild(m); pos = f.end;
+    });
+    pv.appendChild(document.createTextNode(shown.slice(pos)));
+    if (display.length > MAX) pv.appendChild(document.createTextNode("\n\n[Preview truncated. The findings list covers the whole text.]"));
+  }
+})();
+</script>
+</body>
+</html>

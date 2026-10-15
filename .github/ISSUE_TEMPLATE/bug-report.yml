@@ -1,0 +1,23 @@
+name: Bug report
+description: Something crashes, mis-reads a file, or reports the wrong line.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include the command you ran and the output. A tiny input file that reproduces it helps most.
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Version, Python version, OS
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did it happen?
+      options:
+        - Command line
+        - Browser version
+        - Both

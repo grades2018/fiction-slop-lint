@@ -1,0 +1,1900 @@
+{
+ "version": 1,
+ "name": "fiction-slop-lint rules",
+ "note": "Original rules written for this project. Patterns are case-insensitive regular expressions (Python and JavaScript compatible) unless case_sensitive is true. Edit freely. A match is a style hint, not a verdict.",
+ "stopwords": [
+  "a",
+  "about",
+  "above",
+  "after",
+  "again",
+  "all",
+  "also",
+  "am",
+  "an",
+  "and",
+  "any",
+  "are",
+  "as",
+  "at",
+  "back",
+  "be",
+  "because",
+  "been",
+  "before",
+  "being",
+  "below",
+  "between",
+  "both",
+  "but",
+  "by",
+  "can",
+  "can't",
+  "could",
+  "couldn't",
+  "did",
+  "didn't",
+  "do",
+  "does",
+  "doing",
+  "don't",
+  "down",
+  "during",
+  "each",
+  "even",
+  "few",
+  "for",
+  "from",
+  "further",
+  "had",
+  "has",
+  "have",
+  "having",
+  "he",
+  "he's",
+  "her",
+  "here",
+  "hers",
+  "herself",
+  "him",
+  "himself",
+  "his",
+  "how",
+  "i",
+  "i'd",
+  "i'll",
+  "i'm",
+  "i've",
+  "if",
+  "in",
+  "into",
+  "is",
+  "isn't",
+  "it",
+  "it's",
+  "its",
+  "itself",
+  "just",
+  "let's",
+  "like",
+  "me",
+  "more",
+  "most",
+  "my",
+  "myself",
+  "no",
+  "nor",
+  "not",
+  "now",
+  "of",
+  "off",
+  "on",
+  "once",
+  "one",
+  "only",
+  "or",
+  "other",
+  "our",
+  "ours",
+  "ourselves",
+  "out",
+  "over",
+  "own",
+  "said",
+  "same",
+  "say",
+  "says",
+  "she",
+  "she's",
+  "should",
+  "so",
+  "some",
+  "still",
+  "such",
+  "than",
+  "that",
+  "that's",
+  "the",
+  "their",
+  "theirs",
+  "them",
+  "themselves",
+  "then",
+  "there",
+  "there's",
+  "these",
+  "they",
+  "they're",
+  "this",
+  "those",
+  "through",
+  "to",
+  "too",
+  "under",
+  "until",
+  "up",
+  "very",
+  "was",
+  "wasn't",
+  "we",
+  "we're",
+  "were",
+  "what",
+  "what's",
+  "when",
+  "where",
+  "which",
+  "while",
+  "who",
+  "whom",
+  "why",
+  "will",
+  "with",
+  "would",
+  "you",
+  "you'll",
+  "you're",
+  "your",
+  "yours",
+  "yourself",
+  "yourselves"
+ ],
+ "categories": {
+  "llm-phrase": "Phrases and words that appear in lots of machine-written and rushed prose",
+  "body-cliche": "Stock body-language beats",
+  "simile-cliche": "Stock similes, scene openings and atmosphere lines",
+  "dialogue": "Dialogue tags and stock lines",
+  "telling": "Telling, filter words and hedging",
+  "summary": "Summary and backstory in place of scene",
+  "structure": "Punctuation and sentence-shape habits",
+  "repetition": "Repeated openers, names, phrases and words",
+  "rhythm": "Sentence and paragraph rhythm"
+ },
+ "rules": [
+  {
+   "id": "llm-testament-to",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Stock praise phrase. A plain verb usually says it better.",
+   "patterns": [
+    "\\b(?:a|the) testament to\\b",
+    "\\b(?:stands?|stood|served|serves) as a testament\\b"
+   ],
+   "examples": [
+    "Her garden was a testament to patience.",
+    "The old bridge stood as a testament to the town."
+   ],
+   "suggestion": "Say what the thing shows, with a concrete detail."
+  },
+  {
+   "id": "llm-tapestry",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "'Tapestry' is a frequent figurative filler.",
+   "patterns": [
+    "\\btapestr(?:y|ies)\\b"
+   ],
+   "examples": [
+    "The city was a rich tapestry of voices."
+   ],
+   "suggestion": "Name the actual voices or details."
+  },
+  {
+   "id": "llm-shiver-down-spine",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Shiver-down-the-spine beat.",
+   "patterns": [
+    "\\b(?:a |the )?(?:shivers?|chill|tingles?) (?:ran|raced|crawled|crept|went|snaked|coursed|trickled|slithered|shot) (?:down|up|through|along)\\b",
+    "\\bsent (?:a )?(?:shivers?|chills?|tingles?) (?:down|up|through|along)\\b"
+   ],
+   "examples": [
+    "A shiver ran down her spine.",
+    "The noise sent a chill up his back."
+   ],
+   "suggestion": "Show the specific thing the body does, or cut the beat."
+  },
+  {
+   "id": "llm-little-did-she-know",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Narrator-wink foreshadowing.",
+   "patterns": [
+    "\\blittle did (?:he|she|they|i|we|you|[A-Z][a-z]+) (?:know|realize|realise|suspect|guess|imagine)\\b",
+    "\\bunbeknownst to\\b"
+   ],
+   "examples": [
+    "Little did she know, the letter was a trap.",
+    "Unbeknownst to Tom, the door was open."
+   ],
+   "suggestion": "Let the later scene prove it instead of announcing it."
+  },
+  {
+   "id": "llm-eyes-sparkled",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Sparkling, twinkling or dancing eyes.",
+   "patterns": [
+    "\\beyes (?:sparkled|twinkled|glittered|danced|gleamed|shone|glinted|lit up|shimmered)\\b",
+    "\\b(?:sparkle|twinkle|glint|gleam|mischief) in (?:his|her|their|my) eyes\\b"
+   ],
+   "examples": [
+    "Her eyes sparkled with mischief.",
+    "There was a twinkle in his eyes."
+   ],
+   "suggestion": "Pick a behaviour that shows the mood."
+  },
+  {
+   "id": "llm-breath-not-know",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "The breath-you-did-not-know-you-were-holding line.",
+   "patterns": [
+    "\\bbreath (?:he|she|they|i|we|you)(?: had|'d)? ?(?:hadn't|had not|didn't|did not|never)? ?(?:been )?(?:known|realized|realised|know|realize|realise)\\b",
+    "\\bhadn't (?:realized|realised|known) (?:he|she|they|i|we) (?:was|were|had been) holding (?:a |their |his |her )?breath\\b",
+    "\\bbreath (?:he|she|they|i) (?:hadn't|had not|didn't|did not) (?:realize|realise|know)\\b",
+    "\\bhadn't (?:even )?(?:realized|realised|known) (?:he|she|they|i)(?:'d| had) been holding\\b"
+   ],
+   "examples": [
+    "She let out a breath she didn't know she was holding.",
+    "He exhaled a breath he hadn't realized he'd been holding."
+   ],
+   "suggestion": "Cut it. If the character is tense, show the tension another way."
+  },
+  {
+   "id": "llm-barely-whisper",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Barely-above-a-whisper voice.",
+   "patterns": [
+    "\\b(?:barely|hardly|scarcely) (?:above|more than|louder than) a whisper\\b",
+    "\\bin a (?:voice|tone) (?:barely|hardly) (?:above|louder)\\b",
+    "\\bbarely audible\\b"
+   ],
+   "examples": [
+    "\"Stay,\" he said, barely above a whisper.",
+    "Her answer was barely audible."
+   ],
+   "suggestion": "Use the line of dialogue itself to carry the quiet."
+  },
+  {
+   "id": "llm-delve",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "'Delve' is a very frequent assistant-style verb.",
+   "patterns": [
+    "\\bdelv(?:e|es|ed|ing)\\b"
+   ],
+   "examples": [
+    "She decided to delve into the archive."
+   ],
+   "suggestion": "Use dig, search, read, study or explore."
+  },
+  {
+   "id": "llm-realm-of",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "'Realm of' as filler.",
+   "patterns": [
+    "\\b(?:in|into|within) the realm of\\b",
+    "\\bthe realm of (?:possibility|the possible|dreams)\\b"
+   ],
+   "examples": [
+    "It was beyond the realm of possibility."
+   ],
+   "suggestion": "Say it directly."
+  },
+  {
+   "id": "llm-air-thick-with",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Air thick with tension, heavy with something.",
+   "patterns": [
+    "\\bthe air (?:was|felt|grew|hung|became|turned) (?:thick|heavy|electric|charged|taut) (?:with)?\\b",
+    "\\b(?:thick|heavy|charged) with (?:tension|anticipation|unspoken|dread|emotion|promise)\\b"
+   ],
+   "examples": [
+    "The air was thick with tension.",
+    "The room felt heavy with unspoken things."
+   ],
+   "suggestion": "Show what people do when tension is in the room."
+  },
+  {
+   "id": "llm-symphony-of",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Symphony, kaleidoscope or dance of abstractions.",
+   "patterns": [
+    "\\ba (?:symphony|kaleidoscope|cacophony|mosaic|tapestry|crescendo) of\\b",
+    "\\bdance of (?:light|shadows?|colou?rs?|emotions?|flames?)\\b"
+   ],
+   "examples": [
+    "The market was a symphony of smells.",
+    "A kaleidoscope of feelings swept over him."
+   ],
+   "suggestion": "List one or two concrete things instead."
+  },
+  {
+   "id": "llm-myriad",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "'Myriad' is a frequent filler.",
+   "patterns": [
+    "\\bmyriad\\b"
+   ],
+   "examples": [
+    "The shop sold myriad trinkets."
+   ],
+   "suggestion": "Say how many, or name two."
+  },
+  {
+   "id": "llm-beacon-of-hope",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Beacon of hope, ray of light.",
+   "patterns": [
+    "\\bbeacon of (?:hope|light|strength)\\b",
+    "\\ba (?:glimmer|ray|flicker|spark) of hope\\b"
+   ],
+   "examples": [
+    "The lighthouse was a beacon of hope."
+   ],
+   "suggestion": "Be specific about what she hopes for."
+  },
+  {
+   "id": "llm-whispers-of",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Whispers of the past or ancient things.",
+   "patterns": [
+    "\\bwhispers? of (?:the |an |a )?(?:past|forgotten|ancient|long[- ]lost|old|distant|bygone)\\b",
+    "\\becho(?:es)? of (?:the |a |an )?(?:past|forgotten|ancient|long[- ]lost|bygone)\\b"
+   ],
+   "examples": [
+    "The hallway held whispers of the past."
+   ],
+   "suggestion": "Name the memory or object."
+  },
+  {
+   "id": "llm-ethereal-vocab",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Vague elevated adjectives.",
+   "patterns": [
+    "\\b(?:ethereal|otherworldly|ineffable|indescribable|unfathomable|inexorable|visceral)\\b"
+   ],
+   "examples": [
+    "An ethereal glow filled the room."
+   ],
+   "suggestion": "Describe the thing itself."
+  },
+  {
+   "id": "llm-mix-of-emotions",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "'A mix of X and Y' emotion label.",
+   "patterns": [
+    "\\ba (?:mix|mixture|blend|cocktail|swirl|storm|tangle|jumble) of (?:\\w+ ){0,2}(?:fear|excitement|anger|sadness|hope|relief|dread|curiosity|determination|joy|guilt|regret|anticipation|longing|worry|doubt|nerves|trepidation|sorrow|pride)\\b"
+   ],
+   "examples": [
+    "She felt a mix of fear and excitement.",
+    "A swirl of relief and dread rose in him."
+   ],
+   "suggestion": "Show one precise action instead of naming two feelings."
+  },
+  {
+   "id": "llm-couldnt-help-but",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "'Couldn't help but' is a weak filler construction.",
+   "patterns": [
+    "\\bcould(?:n't| not) help but\\b",
+    "\\bcan(?:'t|not) help but\\b"
+   ],
+   "examples": [
+    "She couldn't help but smile."
+   ],
+   "suggestion": "Use the direct verb."
+  },
+  {
+   "id": "llm-wave-of-emotion",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "A wave, rush or surge of emotion.",
+   "patterns": [
+    "\\ba (?:wave|rush|surge|pang|flood|jolt|flicker|twinge|stab|spike) of (?:relief|dread|calm|unease|peace|foreboding|nostalgia|panic|fear|guilt|sadness|anger|joy|longing|anxiety|despair|emotion|grief|warmth|pride)\\b"
+   ],
+   "examples": [
+    "A wave of relief washed over her.",
+    "He felt a surge of anger."
+   ],
+   "suggestion": "Show the reaction in the body or in a choice."
+  },
+  {
+   "id": "llm-weight-of",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "The weight of something as a figurative load.",
+   "patterns": [
+    "\\bthe weight of (?:the |his |her |their |my |it |what |everything |responsibility|expectation|guilt|grief|loss|silence|truth|history)\\w*"
+   ],
+   "examples": [
+    "She felt the weight of his words."
+   ],
+   "suggestion": "Use only if the weight is literal or earned."
+  },
+  {
+   "id": "llm-exhale-breath",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Let out a slow breath, a shaky exhale.",
+   "patterns": [
+    "\\b(?:let|lets|letting|released|releasing|exhaled|blew|blowing) (?:out )?(?:a|an) (?:slow |shaky |long |deep |ragged |shuddering |steadying |quiet |heavy )?(?:breath|sigh|exhale)\\b",
+    "\\bexhaled (?:slowly|shakily|sharply)\\b",
+    "\\btook a (?:deep|steadying|shaky|slow|long) breath\\b"
+   ],
+   "examples": [
+    "She let out a slow breath.",
+    "He took a deep breath and opened the door."
+   ],
+   "suggestion": "Characters breathe constantly. Keep it for moments where it changes something."
+  },
+  {
+   "id": "llm-emotion-etched",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Emotion etched, flickered or crossed a face.",
+   "patterns": [
+    "\\b(?:determination|worry|fear|concern|resolve|exhaustion|pain|sorrow|surprise|anger|doubt|hurt|guilt|hope|relief) (?:etched|flickered|flashed|crossed|danced|clouded|played|shadowed) (?:across|on|in|over|through)\\b",
+    "\\b(?:features|face|expression) (?:etched|twisted|contorted|hardened|softened) (?:with|in)\\b",
+    "\\betched (?:with|in|across) \\w+"
+   ],
+   "examples": [
+    "Determination flickered across her face.",
+    "His face was etched with worry."
+   ],
+   "suggestion": "Describe what the face actually does."
+  },
+  {
+   "id": "llm-moral-ending",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Tidy lesson or 'journey just begun' closing line.",
+   "patterns": [
+    "\\b(?:in the end|ultimately),? (?:it was|she realized|he realized|they realized|she knew|he knew)\\b",
+    "\\bwould (?:never|ever) be the same\\b",
+    "\\bthe journey (?:was|had) (?:only |just )?(?:begun|beginning)\\b",
+    "\\bonly time would tell\\b",
+    "\\bthis was (?:only|just) the beginning\\b",
+    "\\bthe beginning of (?:something|a new chapter|a new era)\\b"
+   ],
+   "examples": [
+    "Nothing would ever be the same.",
+    "Only time would tell.",
+    "In the end, it was love that mattered."
+   ],
+   "suggestion": "End the scene on an image or an action, not a summary lesson."
+  },
+  {
+   "id": "llm-foreshadow-cliche",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Stock ominous foreshadowing.",
+   "patterns": [
+    "\\bthe calm before the storm\\b",
+    "\\ba storm (?:was|is) (?:brewing|coming|approaching)\\b",
+    "\\bwould change everything\\b",
+    "\\bchanged everything\\b",
+    "\\bset (?:the )?(?:events|things) in motion\\b",
+    "\\bbut (?:she|he|they) (?:didn't|did not) know\\b",
+    "\\bsomething (?:was|felt) (?:off|wrong)\\b"
+   ],
+   "examples": [
+    "It was the calm before the storm.",
+    "That decision would change everything."
+   ],
+   "suggestion": "Trust the plot to carry the stakes."
+  },
+  {
+   "id": "llm-stock-character-names",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Names that language models reach for by default. Fine if intentional.",
+   "patterns": [
+    "\\b(?:Elara|Kael|Lyra|Seraphina|Thorne|Zephyr|Lysander|Elowen|Aldric|Isolde|Kaelen|Aelara|Elias Thorne|Evelyn Hart)\\b"
+   ],
+   "examples": [
+    "Elara walked into the hall."
+   ],
+   "suggestion": "Check whether the name is a deliberate choice.",
+   "case_sensitive": true
+  },
+  {
+   "id": "llm-stock-place-names",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Place names that language models reach for by default.",
+   "patterns": [
+    "\\b(?:Eldoria|Willowbrook|Oakhaven|Ravenswood|Silverwood|Everwood|Millbrook|Whisperwood|Misty Hollow|Stormhaven|Eldermere|Havenbrook|Thornfield Vale)\\b"
+   ],
+   "examples": [
+    "The village of Willowbrook slept."
+   ],
+   "suggestion": "Check whether the name is a deliberate choice.",
+   "case_sensitive": true
+  },
+  {
+   "id": "llm-ministrations-orbs",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Over-poetic words for ordinary things.",
+   "patterns": [
+    "\\bministrations\\b",
+    "\\borbs\\b",
+    "\\bmolten (?:gold|silver|eyes|gaze)\\b",
+    "\\bsmoldering gaze\\b",
+    "\\bcrystalline\\b"
+   ],
+   "examples": [
+    "Her orbs found his."
+   ],
+   "suggestion": "Use the plain word."
+  },
+  {
+   "id": "llm-intricate-labyrinth",
+   "category": "llm-phrase",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Intricate web, labyrinth, dance.",
+   "patterns": [
+    "\\bintricate (?:web|dance|network|maze|tapestry|patterns?)\\b",
+    "\\blabyrinth(?:ine)?\\b",
+    "\\bweb of (?:lies|intrigue|deceit|secrets|connections)\\b"
+   ],
+   "examples": [
+    "He was caught in a web of lies."
+   ],
+   "suggestion": "Say what exactly tangles."
+  },
+  {
+   "id": "llm-assistant-leak",
+   "category": "llm-phrase",
+   "severity": "error",
+   "type": "pattern",
+   "message": "Chatbot or editing-prompt text left in the manuscript.",
+   "patterns": [
+    "\\bas an ai(?: language model)?\\b",
+    "\\bi hope this (?:helps|finds you)\\b",
+    "\\bcertainly! here\\b",
+    "\\bsure! here\\b",
+    "\\bhere(?:'s| is) (?:the |a |your )(?:revised|rewritten|updated|expanded|continued?|next|polished) (?:version|chapter|draft|scene|passage|section)\\b",
+    "\\bi(?:'m| am) sorry, but i (?:can(?:'t|not)|am unable)\\b",
+    "\\bwould you like me to\\b",
+    "\\blet me know if you(?:'d| would) like\\b",
+    "\\bi cannot (?:continue|fulfill|assist|create|write)\\b"
+   ],
+   "examples": [
+    "Certainly! Here is the revised chapter.",
+    "As an AI language model, I cannot write that."
+   ],
+   "suggestion": "Delete leftover assistant text before sending the manuscript anywhere."
+  },
+  {
+   "id": "llm-meta-narration",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Narrator addressing the reader or announcing the theme.",
+   "patterns": [
+    "\\bit(?:'s| is) (?:worth|important) (?:noting|to note|remembering)\\b",
+    "\\bit goes without saying\\b",
+    "\\bneedless to say\\b",
+    "\\bin (?:today's|this) (?:fast-paced|modern|ever-changing) world\\b",
+    "\\bat the end of the day\\b"
+   ],
+   "examples": [
+    "It is important to note that she was afraid.",
+    "Needless to say, he was late."
+   ],
+   "suggestion": "Cut the throat-clearing and go straight to the point."
+  },
+  {
+   "id": "body-heartbeat",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Heart pounding, racing or skipping.",
+   "patterns": [
+    "\\b(?:her|his|their|my|the) hearts? (?:pounded|hammered|thundered|raced|skipped a beat|leapt|leaped|stuttered|fluttered|clenched|sank|dropped|lurched|thudded|drummed|pounding|racing)\\b",
+    "\\bheart in (?:her|his|their|my) (?:throat|chest|mouth)\\b",
+    "\\bpulse (?:pounded|raced|quickened|roared|thrummed|jumped)\\b"
+   ],
+   "examples": [
+    "Her heart pounded in her chest.",
+    "His pulse raced."
+   ],
+   "suggestion": "Pick one fresh physical sign or none."
+  },
+  {
+   "id": "body-breath-caught",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Breath catching or hitching.",
+   "patterns": [
+    "\\b(?:breath|breathing) (?:caught|hitched|stilled|stuttered|quickened|hung|stopped)\\b",
+    "\\bsucked in a (?:sharp )?breath\\b",
+    "\\bbreath caught in (?:her|his|their|my) throat\\b",
+    "\\bgasped? (?:sharply|softly)\\b",
+    "\\bsharp intake of breath\\b"
+   ],
+   "examples": [
+    "Her breath caught.",
+    "He sucked in a sharp breath."
+   ],
+   "suggestion": "Vary or cut."
+  },
+  {
+   "id": "body-jaw",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Clenched, tightened or ticking jaw.",
+   "patterns": [
+    "\\bjaw (?:clenched|tightened|tensed|ticked|set|worked|flexed)\\b",
+    "\\b(?:clenched|tightened|set|flexed|tensed|squared) (?:his|her|their) jaw\\b",
+    "\\bmuscle (?:in|along|at) (?:his|her) jaw\\b"
+   ],
+   "examples": [
+    "His jaw clenched.",
+    "She set her jaw."
+   ],
+   "suggestion": "A very common beat. Show anger in a choice."
+  },
+  {
+   "id": "body-knuckles-white",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "White knuckles.",
+   "patterns": [
+    "\\bknuckles (?:turned|went|were|whitened|white|paled)\\b",
+    "\\bwhite[- ]knuckled\\b",
+    "\\buntil (?:his|her|their) knuckles\\b"
+   ],
+   "examples": [
+    "She gripped the rail until her knuckles turned white."
+   ],
+   "suggestion": "Try what the hand does with the object."
+  },
+  {
+   "id": "body-stomach",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Stomach dropping, churning or knotting.",
+   "patterns": [
+    "\\bstomach (?:dropped|churned|twisted|knotted|flipped|clenched|lurched|tightened|fluttered|sank|turned)\\b",
+    "\\bpit of (?:his|her|my|their) stomach\\b",
+    "\\bbutterflies\\b",
+    "\\b(?:gut|stomach) (?:in|into) knots\\b"
+   ],
+   "examples": [
+    "Her stomach dropped.",
+    "A sick feeling settled in the pit of his stomach."
+   ],
+   "suggestion": "Replace with a particular sensation."
+  },
+  {
+   "id": "body-eyes-gesture",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Narrowing, widening, flashing or rolling eyes.",
+   "patterns": [
+    "\\beyes (?:narrowed|widened|flashed|darkened|softened|hardened|glazed|bore into|burned|blazed|flicked|drifted)\\b",
+    "\\b(?:narrowed|rolled|arched|raised|furrowed|quirked) (?:his|her|their) (?:eyes|eyebrows?|brows?)\\b",
+    "\\beyebrow (?:shot up|rose|arched|lifted)\\b",
+    "\\b(?:raised|arched|cocked|lifted) an? eyebrow\\b"
+   ],
+   "examples": [
+    "Her eyes narrowed.",
+    "He raised an eyebrow."
+   ],
+   "suggestion": "Eye gestures carry too much of the dialogue in many drafts."
+  },
+  {
+   "id": "body-gave-a-nod",
+   "category": "body-cliche",
+   "severity": "info",
+   "type": "pattern",
+   "message": "'Gave a small nod/shrug/smile' light-verb beat.",
+   "patterns": [
+    "\\b(?:gave|offered|flashed|shot|cracked) (?:\\w+ )?(?:a |an )(?:small |slight |curt |short |brief |tight |sharp |quick |faint |soft |wry |tired |sad |crooked )?(?:nod|shrug|smile|grin|sigh|laugh|chuckle|smirk|wink)\\b"
+   ],
+   "examples": [
+    "She gave a small nod.",
+    "He flashed a crooked grin."
+   ],
+   "suggestion": "Use the verb directly: she nodded."
+  },
+  {
+   "id": "body-lips-smile",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Lips curving, smile tugging.",
+   "patterns": [
+    "\\blips (?:curved|curled|twitched|quirked|parted|pressed|thinned|tugged|pulled|turned)\\b",
+    "\\b(?:smile|grin|smirk) (?:tugged|played|ghosted|touched|tugging|crept|spread|flickered)\\b",
+    "\\bwry (?:smile|grin|smirk)\\b",
+    "\\bghost of a (?:smile|grin|smirk)\\b",
+    "\\bcorners? of (?:his|her|their) (?:mouth|lips) (?:twitched|lifted|curved|quirked|turned)\\b"
+   ],
+   "examples": [
+    "The corner of his mouth twitched.",
+    "A ghost of a smile touched her lips."
+   ],
+   "suggestion": "Prefer a specific, character-driven reaction."
+  },
+  {
+   "id": "body-hand-hair",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Running a hand through hair or down the face.",
+   "patterns": [
+    "\\bran (?:a |his |her |their )?(?:hand|hands|fingers) (?:through|over|across|along) (?:his|her|their) (?:hair|face|scalp|jaw|neck)\\b",
+    "\\bran a (?:hand|palm) down (?:his|her|their) face\\b",
+    "\\btucked (?:a |the )?(?:strand|lock|loose strand|wisp) of hair\\b",
+    "\\bpush(?:ed)? (?:a )?(?:strand|lock) of hair\\b"
+   ],
+   "examples": [
+    "He ran a hand through his hair.",
+    "She tucked a strand of hair behind her ear."
+   ],
+   "suggestion": "Stock gesture. Replace or cut."
+  },
+  {
+   "id": "body-throat-lump",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Swallowing hard, lump in the throat.",
+   "patterns": [
+    "\\bswallowed (?:hard|thickly|the lump|nervously|audibly)\\b",
+    "\\blump in (?:his|her|their|my) throat\\b",
+    "\\bthroat (?:tightened|constricted|went dry|closed|bobbed)\\b",
+    "\\bmouth (?:went|was|felt|turned) dry\\b"
+   ],
+   "examples": [
+    "She swallowed hard.",
+    "He felt a lump in his throat."
+   ],
+   "suggestion": "Vary the nervous tell."
+  },
+  {
+   "id": "body-chill-goosebumps",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Goosebumps, chills, raised neck hairs.",
+   "patterns": [
+    "\\bgoose ?(?:bumps|flesh|pimples)\\b",
+    "\\bchill (?:ran|crept|raced|snaked|slithered|crawled) (?:down|up|through)\\b",
+    "\\bhairs? (?:on (?:the back of )?(?:his|her|my|their) (?:neck|arms?) )?(?:stood|rose|prickled)\\b",
+    "\\bskin (?:crawled|prickled|tingled)\\b"
+   ],
+   "examples": [
+    "Goosebumps rose on her arms.",
+    "The hair on the back of his neck stood up."
+   ],
+   "suggestion": "Cut or make it specific to the scene."
+  },
+  {
+   "id": "body-tears",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Tears pricking, welling or spilling.",
+   "patterns": [
+    "\\btears (?:pricked|welled|streamed|spilled|threatened|stung|brimmed|gathered|slipped|blurred)\\b",
+    "\\bblinked back (?:the )?tears\\b",
+    "\\bunshed tears\\b",
+    "\\beyes (?:welled|brimmed|filled) with tears\\b",
+    "\\bsalty tears\\b"
+   ],
+   "examples": [
+    "Tears welled in her eyes.",
+    "He blinked back tears."
+   ],
+   "suggestion": "Let the reader get there from the situation."
+  },
+  {
+   "id": "body-tired-gestures",
+   "category": "body-cliche",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Pinching the nose bridge, rubbing the temples.",
+   "patterns": [
+    "\\bpinch(?:ed|ing) the bridge of (?:his|her|their) nose\\b",
+    "\\b(?:massaged|rubbed|pressed) (?:his|her|their) temples\\b",
+    "\\brubbed the back of (?:his|her|their) neck\\b",
+    "\\bscrubbed (?:a |his |her )?(?:hand )?(?:over|across) (?:his|her) face\\b"
+   ],
+   "examples": [
+    "He pinched the bridge of his nose."
+   ],
+   "suggestion": "Stock stress gestures."
+  },
+  {
+   "id": "body-time-stopped",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Time slowing or the world falling away.",
+   "patterns": [
+    "\\btime (?:seemed to )?(?:slow|stop|stand still|freeze|stretch|crawl)\\b",
+    "\\bthe world (?:around (?:her|him|them) )?(?:seemed to )?(?:fell away|narrowed|faded|stopped|slowed|tilted|shrank|blurred)\\b",
+    "\\bfroze (?:in place|on the spot|mid-\\w+)\\b",
+    "\\bevery(?:thing| other thing) else (?:faded|fell away)\\b"
+   ],
+   "examples": [
+    "Time seemed to slow.",
+    "The world fell away."
+   ],
+   "suggestion": "Use sparingly, once per book at most."
+  },
+  {
+   "id": "body-voice-quality",
+   "category": "body-cliche",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Voice cracking, wavering, dropping.",
+   "patterns": [
+    "\\b(?:his|her|their|my) voice (?:dropped|lowered|softened|cracked|wavered|trembled|broke|hardened|sharpened|rasped|faltered)\\b",
+    "\\bvoice,? (?:laced|tinged|dripping|heavy|thick) with\\b"
+   ],
+   "examples": [
+    "Her voice cracked.",
+    "His voice, laced with sarcasm, filled the room."
+   ],
+   "suggestion": "Let the words carry the tone."
+  },
+  {
+   "id": "body-silence",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Silence stretching, hanging or settling.",
+   "patterns": [
+    "\\bsilence (?:stretched|hung|settled|fell|descended|lingered|thickened|pressed|reigned|stretched between)\\b",
+    "\\ba beat of silence\\b",
+    "\\bthe silence between them\\b",
+    "\\bpregnant (?:pause|silence)\\b",
+    "\\bdeafening silence\\b"
+   ],
+   "examples": [
+    "Silence stretched between them.",
+    "A beat of silence passed."
+   ],
+   "suggestion": "Describe what is audible in the quiet."
+  },
+  {
+   "id": "body-hung-in-air",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Words or tension hanging in the air.",
+   "patterns": [
+    "\\b(?:words|things|questions|tension|promise|unspoken\\w*|accusation|question) (?:hung|lingered|hovered) (?:heavy |heavily )?(?:in the air|between them)\\b",
+    "\\bhung (?:heavy )?in the air\\b"
+   ],
+   "examples": [
+    "The question hung in the air.",
+    "Unspoken words lingered between them."
+   ],
+   "suggestion": "Show the reaction instead."
+  },
+  {
+   "id": "body-shoulders-tense",
+   "category": "body-cliche",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Shoulders tensing, sagging or squaring.",
+   "patterns": [
+    "\\bshoulders (?:tensed|sagged|slumped|stiffened|squared|dropped|tightened|relaxed|shook|rose)\\b",
+    "\\b(?:squared|straightened|hunched|shrugged) (?:his|her|their) shoulders\\b",
+    "\\btension (?:left|drained from|melted from) (?:his|her) (?:shoulders|body)\\b"
+   ],
+   "examples": [
+    "Her shoulders sagged.",
+    "He squared his shoulders."
+   ],
+   "suggestion": "Common default beat."
+  },
+  {
+   "id": "simile-cold-as-ice",
+   "category": "simile-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Stock temperature or colour simile.",
+   "patterns": [
+    "\\b(?:as )?(?:cold|pale|white|black|green|red) as (?:ice|death|a ghost|snow|a sheet|night|coal|pitch|envy|a beet)\\b",
+    "\\bgreen with envy\\b"
+   ],
+   "examples": [
+    "His hands were cold as ice.",
+    "She turned as white as a sheet."
+   ],
+   "suggestion": "Invent something that belongs to your setting."
+  },
+  {
+   "id": "simile-animal-stock",
+   "category": "simile-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Stock animal comparisons.",
+   "patterns": [
+    "\\blike a (?:moth|moths) to (?:a )?flame\\b",
+    "\\blike a deer (?:caught )?in (?:the )?headlights\\b",
+    "\\blike a (?:bird|tiger|lion|animal) in a cage\\b",
+    "\\blike a caged (?:animal|bird|tiger|lion|beast)\\b",
+    "\\b(?:busy|brave|strong|stubborn|quiet|proud|free|wise|sly|blind) as (?:a |an )(?:bee|lion|ox|mule|mouse|peacock|bird|owl|fox|bat)\\b",
+    "\\blike a (?:wounded|hunted|cornered) (?:animal|beast|deer)\\b"
+   ],
+   "examples": [
+    "She froze like a deer in headlights.",
+    "He was stubborn as a mule."
+   ],
+   "suggestion": "Use a comparison only your narrator would make."
+  },
+  {
+   "id": "simile-quiet-as",
+   "category": "simile-cliche",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Quiet-as-the-grave style simile.",
+   "patterns": [
+    "\\b(?:quiet|silent|still|dead) as (?:a mouse|the grave|death|a tomb|a stone|a statue)\\b",
+    "\\bsilent as the grave\\b"
+   ],
+   "examples": [
+    "The house was quiet as a tomb."
+   ],
+   "suggestion": "Describe the actual sounds."
+  },
+  {
+   "id": "simile-sharp-as",
+   "category": "simile-cliche",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Sharp-as-a-razor style simile.",
+   "patterns": [
+    "\\b(?:sharp|keen) as (?:a )?(?:razor|knife|glass|dagger|tack|blade)\\b",
+    "\\b(?:hard|solid|cold|heavy|steady) as (?:a )?(?:rock|stone|steel|iron|nails|lead)\\b"
+   ],
+   "examples": [
+    "Her wit was sharp as a razor.",
+    "He was hard as nails."
+   ],
+   "suggestion": "Replace with a specific detail."
+  },
+  {
+   "id": "simile-punch-to-gut",
+   "category": "simile-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Like a punch or knife to the gut.",
+   "patterns": [
+    "\\blike a (?:punch|kick|knife|dagger|blow|slap|fist) (?:to|in) the (?:gut|heart|stomach|chest|face|ribs)\\b",
+    "\\bfelt like a (?:punch|kick|blow|slap)\\b"
+   ],
+   "examples": [
+    "The news hit like a punch to the gut."
+   ],
+   "suggestion": "Use a literal reaction."
+  },
+  {
+   "id": "simile-light-shadow",
+   "category": "simile-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Dancing light, creeping shadow.",
+   "patterns": [
+    "\\b(?:light|shadows?|flames?|sunlight|moonlight|firelight|lamplight|candlelight) (?:danced|flickered|played|pooled|spilled|painted|bathed|kissed|stretched|crept|loomed|clung|licked)\\b",
+    "\\bbathed in (?:golden|silver|soft|warm|pale|amber)\\b",
+    "\\b(?:darkness|dark|night) (?:swallowed|consumed|enveloped|engulfed|wrapped|pressed|closed in)\\b"
+   ],
+   "examples": [
+    "Shadows danced on the walls.",
+    "The room was bathed in golden light."
+   ],
+   "suggestion": "Be specific about the source and the room."
+  },
+  {
+   "id": "simile-weather-sky",
+   "category": "simile-cliche",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Stock sky and weather lines.",
+   "patterns": [
+    "\\bdark and stormy night\\b",
+    "\\brain (?:hammered|lashed|pattered|drummed) (?:against|on|at)\\b",
+    "\\bsun (?:dipped|sank|slipped|set) (?:below|beneath) the horizon\\b",
+    "\\b(?:painting|painted|painting the) the sky\\b",
+    "\\bgolden hour\\b",
+    "\\bcrisp (?:autumn|morning) air\\b"
+   ],
+   "examples": [
+    "The sun dipped below the horizon, painting the sky orange."
+   ],
+   "suggestion": "Name something only this place has."
+  },
+  {
+   "id": "simile-stock-comparison",
+   "category": "simile-cliche",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Over-used time and speed comparisons.",
+   "patterns": [
+    "\\b(?:fast|quick|swift|quickly|fast) as (?:lightning|the wind|a flash|a cat)\\b",
+    "\\bspread like wildfire\\b",
+    "\\blike (?:clockwork|a well-oiled machine)\\b",
+    "\\bgood as gold\\b",
+    "\\bin the blink of an eye\\b",
+    "\\bstuck out like a sore thumb\\b"
+   ],
+   "examples": [
+    "News spread like wildfire."
+   ],
+   "suggestion": "Replace the proverb with a concrete image."
+  },
+  {
+   "id": "simile-opening-cliche",
+   "category": "simile-cliche",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Wake-up, alarm or mirror scene opening.",
+   "patterns": [
+    "\\b(?:woke (?:up )?to the (?:sound|sight|smell)|jolted awake|startled awake|shot up in bed|bolted upright|snapped awake)\\b",
+    "\\b(?:studied|examined|stared at) (?:his|her) (?:own )?reflection\\b",
+    "\\bstared (?:back )?at (?:him|her)self in the mirror\\b",
+    "\\blooked (?:at|into) (?:the|a) mirror\\b"
+   ],
+   "examples": [
+    "She jolted awake, heart racing.",
+    "He studied his reflection in the glass."
+   ],
+   "suggestion": "Start the scene later, in motion."
+  },
+  {
+   "id": "dialogue-adverb-tag",
+   "category": "dialogue",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Adverb attached to a speech tag.",
+   "patterns": [
+    "\\b(?:said|asked|replied|answered|whispered|muttered|snapped|murmured|shouted|called|breathed|hissed|growled|retorted|responded|added|continued|stated|sighed|laughed|cried) \\w{3,}ly\\b"
+   ],
+   "examples": [
+    "\"No,\" she said firmly.",
+    "\"Go,\" he whispered urgently."
+   ],
+   "suggestion": "Make the line carry the tone. Use 'said' or a beat.",
+   "exclude": [
+    "said only",
+    "said early",
+    "said family",
+    "asked only",
+    "replied only",
+    "added only",
+    "called early",
+    "said lily",
+    "said holy",
+    "said ugly",
+    "asked lily",
+    "said lonely"
+   ]
+  },
+  {
+   "id": "dialogue-ly-density",
+   "category": "dialogue",
+   "severity": "info",
+   "type": "density",
+   "message": "High density of -ly adverbs.",
+   "patterns": [
+    "\\b[a-z]{3,}ly\\b"
+   ],
+   "max_per_1000": 14,
+   "min_count": 12,
+   "min_words": 300,
+   "examples": [
+    "She walked slowly, spoke quietly, smiled softly, and turned gently while he waited patiently and listened carefully. They moved quickly, spoke warmly, watched closely, laughed loudly, and left suddenly. He nodded silently and smiled sadly."
+   ],
+   "suggestion": "Look for the verbs that need the adverb.",
+   "exclude": [
+    "only",
+    "family",
+    "early",
+    "lonely",
+    "lovely",
+    "ugly",
+    "holy",
+    "reply",
+    "apply",
+    "supply",
+    "belly",
+    "jelly",
+    "bully",
+    "rally",
+    "silly",
+    "ally",
+    "july",
+    "fly",
+    "friendly",
+    "likely",
+    "unlikely",
+    "daily",
+    "weekly",
+    "monthly",
+    "yearly",
+    "hourly",
+    "lily",
+    "italy",
+    "anomaly",
+    "assembly",
+    "butterfly",
+    "homily",
+    "melancholy",
+    "oily",
+    "curly",
+    "jolly",
+    "bubbly",
+    "chilly",
+    "sly",
+    "lowly",
+    "elderly",
+    "costly",
+    "deadly",
+    "orderly",
+    "cowardly",
+    "ghostly",
+    "motherly",
+    "fatherly",
+    "brotherly",
+    "sisterly",
+    "womanly",
+    "manly",
+    "kindly",
+    "timely",
+    "wobbly",
+    "hilly",
+    "wily",
+    "surly",
+    "grisly",
+    "gnarly",
+    "burly",
+    "dolly",
+    "molly",
+    "sally",
+    "emily",
+    "kelly",
+    "billy",
+    "willy",
+    "ely",
+    "rely",
+    "multiply",
+    "imply",
+    "comply",
+    "underbelly",
+    "firefly",
+    "dragonfly",
+    "gadfly",
+    "slyly"
+   ]
+  },
+  {
+   "id": "dialogue-bookisms",
+   "category": "dialogue",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Showy speech verbs in place of 'said'.",
+   "patterns": [
+    "\\b(?:exclaimed|declared|proclaimed|opined|chortled|interjected|intoned|averred|queried|quipped|retorted|bellowed|simpered|cooed|crooned|ejaculated|expostulated)\\b"
+   ],
+   "examples": [
+    "\"Indeed,\" he opined.",
+    "\"Marvelous!\" she exclaimed."
+   ],
+   "suggestion": "'Said' disappears, which is usually what you want."
+  },
+  {
+   "id": "dialogue-nonspeech-tag",
+   "category": "dialogue",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Smile, nod or sigh used as a speech tag.",
+   "patterns": [
+    "[,!?]\\\" (?:he|she|they) (?:smiled|grinned|laughed|sighed|nodded|shrugged|frowned|chuckled|smirked|winked|scowled|giggled|beamed|grimaced)\\b"
+   ],
+   "examples": [
+    "\"Fine,\" she smiled.",
+    "\"Sure!\" he grinned."
+   ],
+   "suggestion": "Split the action into its own sentence.",
+   "case_sensitive": true
+  },
+  {
+   "id": "dialogue-voice-tag-tail",
+   "category": "dialogue",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Tag followed by a voice description clause.",
+   "patterns": [
+    "\\b(?:said|asked|replied|whispered|murmured|muttered|answered),? (?:his|her|their) voice (?:\\w+ )?(?:thick|low|soft|rough|hoarse|steady|tight|laced|tinged|dripping|barely|flat|cold|calm|heavy)\\b"
+   ],
+   "examples": [
+    "\"Fine,\" she said, her voice tight."
+   ],
+   "suggestion": "One voice note per scene is plenty."
+  },
+  {
+   "id": "dialogue-on-the-nose",
+   "category": "dialogue",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Stock on-the-nose dialogue lines.",
+   "patterns": [
+    "\\bwe need to talk\\b",
+    "\\bi need you to (?:listen|understand|trust me)\\b",
+    "\\bthere(?:'s| is) something (?:you|i) (?:need|have) to (?:tell|know|show)\\b",
+    "\\bthis changes everything\\b",
+    "\\bit(?:'s| is) not what it looks like\\b",
+    "\\byou don't understand\\b",
+    "\\bas you (?:already )?know\\b"
+   ],
+   "examples": [
+    "\"We need to talk,\" she said.",
+    "\"As you know, Bob, the ship leaves at dawn.\""
+   ],
+   "suggestion": "Let characters talk around the issue."
+  },
+  {
+   "id": "dialogue-air-quotes-meta",
+   "category": "dialogue",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Dialogue that announces its own emotion.",
+   "patterns": [
+    "\\b(?:he|she|they|i) (?:said|asked|replied) (?:with|in) (?:a|an) (?:sigh|smile|laugh|frown|tone|voice) (?:of|that was|full of|filled with)\\b",
+    "\\bwith (?:a|an) (?:edge|hint|note|touch|trace) of (?:sarcasm|bitterness|irony|amusement|steel|anger|sadness)\\b"
+   ],
+   "examples": [
+    "\"Great,\" he said with a note of sarcasm."
+   ],
+   "suggestion": "If the line needs a label, rewrite the line."
+  },
+  {
+   "id": "telling-filter-words",
+   "category": "telling",
+   "severity": "info",
+   "type": "density",
+   "message": "Many perception and cognition filter words.",
+   "patterns": [
+    "\\b(?:felt|noticed|realized|realised|wondered|seemed|decided|sensed|watched as|saw that|could see|could hear|could feel)\\b"
+   ],
+   "max_per_1000": 16,
+   "min_count": 8,
+   "min_words": 200,
+   "examples": [
+    "She noticed the door. She realized it was open. She felt afraid, wondered who came in, decided to look, and sensed danger. He seemed calm. She felt better. She noticed more."
+   ],
+   "suggestion": "Cut the filter and state the thing seen, heard or felt."
+  },
+  {
+   "id": "telling-hedging",
+   "category": "telling",
+   "severity": "info",
+   "type": "density",
+   "message": "Frequent hedging constructions.",
+   "patterns": [
+    "\\bseemed to\\b",
+    "\\bappeared to\\b",
+    "\\bas though\\b",
+    "\\balmost as if\\b",
+    "\\bsomehow\\b",
+    "\\bseemingly\\b"
+   ],
+   "max_per_1000": 4,
+   "min_count": 4,
+   "min_words": 200,
+   "examples": [
+    "It seemed to work. It seemed to hum. It appeared to move. It was as though it knew. Somehow, it was almost as if it breathed."
+   ],
+   "suggestion": "State what happens. Hedge only when the viewpoint character truly is unsure."
+  },
+  {
+   "id": "telling-named-emotion",
+   "category": "telling",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Emotion stated directly as a label.",
+   "patterns": [
+    "\\b(?:felt|was|were) (?:filled|flooded|consumed|overcome|overwhelmed|gripped|seized) (?:with|by)\\b",
+    "\\b(?:he|she|they|i) (?:felt|was feeling) (?:so |very |extremely |incredibly |a little |utterly )?(?:sad|angry|happy|afraid|scared|nervous|anxious|excited|lonely|guilty|hopeful|relieved|ashamed|jealous|exhausted|overwhelmed)\\b"
+   ],
+   "examples": [
+    "She felt so sad.",
+    "He was overwhelmed by grief."
+   ],
+   "suggestion": "Show it with a choice or an action."
+  },
+  {
+   "id": "telling-intensifiers",
+   "category": "telling",
+   "severity": "info",
+   "type": "density",
+   "message": "Frequent intensifiers.",
+   "patterns": [
+    "\\b(?:very|really|extremely|incredibly|utterly|absolutely|truly|deeply|completely|totally|quite|rather|incredibly|remarkably|profoundly)\\b"
+   ],
+   "max_per_1000": 8,
+   "min_count": 6,
+   "min_words": 200,
+   "examples": [
+    "It was very cold and really dark. She was extremely tired and truly lost, completely alone, utterly spent, deeply afraid, and incredibly late. Quite rather odd."
+   ],
+   "suggestion": "Pick a stronger word or drop the modifier."
+  },
+  {
+   "id": "telling-suddenly",
+   "category": "telling",
+   "severity": "info",
+   "type": "density",
+   "message": "Sudden-event markers used repeatedly.",
+   "patterns": [
+    "\\bsuddenly\\b",
+    "\\babruptly\\b",
+    "\\ball of a sudden\\b",
+    "\\bin an instant\\b",
+    "\\bwithout warning\\b",
+    "\\bout of nowhere\\b"
+   ],
+   "max_per_1000": 1.5,
+   "min_count": 3,
+   "min_words": 200,
+   "examples": [
+    "Suddenly the lights went out. Abruptly the door opened. All of a sudden, someone laughed. Without warning, the floor shook."
+   ],
+   "suggestion": "Let the event itself be sudden through sentence rhythm."
+  },
+  {
+   "id": "telling-began-to",
+   "category": "telling",
+   "severity": "info",
+   "type": "density",
+   "message": "'Began to' and 'started to' weaken verbs.",
+   "patterns": [
+    "\\b(?:began|started|begins|starts|begin|start) to\\b",
+    "\\bproceeded to\\b",
+    "\\bmanaged to\\b"
+   ],
+   "max_per_1000": 3,
+   "min_count": 4,
+   "min_words": 200,
+   "examples": [
+    "She began to run. He started to cry. It began to rain. They started to dance. She proceeded to leave."
+   ],
+   "suggestion": "Use the verb itself: she ran."
+  },
+  {
+   "id": "telling-vague-something",
+   "category": "telling",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Vague 'something shifted/unreadable' phrasing.",
+   "patterns": [
+    "\\bsomething (?:in|about) (?:his|her|their|the way)\\b",
+    "\\bsomething (?:shifted|changed|stirred|flickered|passed between)\\b",
+    "\\bsomething (?:unreadable|unspoken|unnamed|indefinable)\\b",
+    "\\b(?:unreadable|unfathomable|inscrutable|indescribable) (?:expression|emotion|look|understanding)\\b",
+    "\\ban emotion (?:she|he|they) (?:couldn't|could not) (?:name|place|read)\\b"
+   ],
+   "examples": [
+    "Something shifted between them.",
+    "He wore an unreadable expression."
+   ],
+   "suggestion": "Name the detail the viewpoint character actually notices."
+  },
+  {
+   "id": "telling-epiphany",
+   "category": "telling",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Announced realization.",
+   "patterns": [
+    "\\b(?:realized|realised|understood|knew|saw) (?:then |now |suddenly |in that moment )?that (?:nothing|everything|this) (?:would|was|had)\\b",
+    "\\bin that moment,? (?:she|he|they|i) (?:realized|realised|knew|understood)\\b",
+    "\\bit (?:hit|struck|dawned on) (?:her|him|them|me)\\b",
+    "\\bthe realization (?:hit|washed|dawned|struck|settled)\\b"
+   ],
+   "examples": [
+    "In that moment, she realized he had lied.",
+    "It dawned on him that the door was open."
+   ],
+   "suggestion": "Let readers make the connection from the evidence."
+  },
+  {
+   "id": "telling-rule-of-three",
+   "category": "telling",
+   "severity": "info",
+   "type": "density",
+   "message": "Frequent three-item lists.",
+   "patterns": [
+    "\\b[a-z]+, [a-z]+,? and [a-z]+\\b"
+   ],
+   "max_per_1000": 3,
+   "min_count": 4,
+   "min_words": 200,
+   "examples": [
+    "She was tired, hungry, and cold. He was loud, rude, and proud. It was dark, wet, and silent. They ran, hid, and waited. Slow, steady, and calm."
+   ],
+   "suggestion": "Break the rhythm: use two items, or four, or one strong one."
+  },
+  {
+   "id": "summary-time-skip",
+   "category": "summary",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Summary time-skip phrasing in place of a scene.",
+   "patterns": [
+    "\\b(?:over|during) the (?:next|following|coming) (?:few |several |many |couple of )?(?:days|weeks|months|years|hours)\\b",
+    "\\bas (?:the )?(?:days|weeks|months|years) (?:passed|went by|turned into|slipped by|rolled by)\\b",
+    "\\bin the (?:days|weeks|months|years) (?:that followed|to come|after)\\b",
+    "\\btime (?:passed|went on|flew by|marched on)\\b",
+    "\\b(?:days|weeks|months) (?:turned|blurred|melted) (?:in)?to (?:weeks|months|years|one another)\\b"
+   ],
+   "examples": [
+    "Over the next few weeks, they grew closer.",
+    "As the days passed, the fear faded."
+   ],
+   "suggestion": "If it matters, dramatize one moment of the period."
+  },
+  {
+   "id": "summary-routine",
+   "category": "summary",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Habitual routine summary.",
+   "patterns": [
+    "\\b(?:fell|settled|slipped|fall|settle) into (?:a|an|their|her|his) (?:routine|rhythm|pattern|comfortable)\\b",
+    "\\bbecame (?:a|their|her|his) (?:routine|ritual|habit)\\b",
+    "\\b(?:every|each) (?:morning|evening|day|night|afternoon|weekend)(?:,)? (?:she|he|they|i|we)\\b"
+   ],
+   "examples": [
+    "They settled into a routine.",
+    "Every morning she walked to the harbor."
+   ],
+   "suggestion": "Pick one specific morning and play it."
+  },
+  {
+   "id": "summary-backstory-markers",
+   "category": "summary",
+   "severity": "info",
+   "type": "density",
+   "message": "Dense backstory markers.",
+   "patterns": [
+    "\\bhad (?:always|never) (?:been|wanted|dreamed|known|felt|believed)\\b",
+    "\\b(?:years|decades) (?:ago|earlier|before|prior)\\b",
+    "\\bgrowing up\\b",
+    "\\bas a child\\b",
+    "\\bwhen (?:she|he|they) was (?:a child|little|young|eight|ten|twelve)\\b"
+   ],
+   "max_per_1000": 3,
+   "min_count": 4,
+   "min_words": 200,
+   "examples": [
+    "She had always wanted this. Years ago she left. Growing up, she dreamed. As a child, she hid. He had never been brave. Decades earlier it ended."
+   ],
+   "suggestion": "Spread backstory out, or turn it into a scene."
+  },
+  {
+   "id": "summary-memory-flood",
+   "category": "summary",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Memories flooding back.",
+   "patterns": [
+    "\\b(?:all of it|everything|it all) (?:came|rushed|flooded|washed) (?:crashing |rushing )?back\\b",
+    "\\bmemories (?:flooded|rushed|came flooding|washed|surged) (?:back|over|in)\\b",
+    "\\bflooded (?:back )?with memories\\b"
+   ],
+   "examples": [
+    "Memories flooded back."
+   ],
+   "suggestion": "Give one concrete memory."
+  },
+  {
+   "id": "summary-character-label",
+   "category": "summary",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Character introduced by a type label.",
+   "patterns": [
+    "\\bthe kind of (?:person|man|woman|girl|boy|guy|people) (?:who|that)\\b",
+    "\\bwas a (?:woman|man|girl|boy) (?:of few words|of\\b)",
+    "\\bwas not (?:a|the) (?:woman|man|person|girl|boy) (?:who|to)\\b"
+   ],
+   "examples": [
+    "She was the kind of woman who never asked for help."
+   ],
+   "suggestion": "Show the trait in an action."
+  },
+  {
+   "id": "summary-scene-opening-weather",
+   "category": "summary",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Scene opening with a stock time or weather line.",
+   "patterns": [
+    "(?:^|\\n)\\s*It was (?:a |an )?(?:bright|cold|crisp|warm|gray|grey|quiet|rainy|sunny|dark|ordinary|typical|beautiful|chilly|perfect|dreary|bleak)[\\w ,]{0,25}(?:morning|evening|afternoon|night|day)\\b"
+   ],
+   "examples": [
+    "\nIt was a cold, gray morning in November."
+   ],
+   "suggestion": "Open on a character doing something."
+  },
+  {
+   "id": "structure-em-dash-density",
+   "category": "structure",
+   "severity": "warn",
+   "type": "density",
+   "message": "Heavy use of dashes as punctuation.",
+   "patterns": [
+    "\\u2014",
+    "--",
+    " \\u2013 "
+   ],
+   "max_per_1000": 4,
+   "min_count": 5,
+   "min_words": 200,
+   "examples": [
+    "He stopped\u2014then ran\u2014and she followed\u2014slowly\u2014into the dark\u2014alone."
+   ],
+   "suggestion": "Try commas, periods or parentheses for some of them."
+  },
+  {
+   "id": "structure-ellipsis-density",
+   "category": "structure",
+   "severity": "info",
+   "type": "density",
+   "message": "Frequent ellipses.",
+   "patterns": [
+    "\\.\\.\\.",
+    "\\u2026"
+   ],
+   "max_per_1000": 3,
+   "min_count": 4,
+   "min_words": 200,
+   "examples": [
+    "Well... maybe... I guess... no... fine... okay..."
+   ],
+   "suggestion": "Keep ellipses for real trailing off."
+  },
+  {
+   "id": "structure-not-x-but-y",
+   "category": "structure",
+   "severity": "warn",
+   "type": "density",
+   "message": "Frequent 'not X, but Y' or 'it wasn't X, it was Y' contrast pattern.",
+   "patterns": [
+    "\\bnot (?:just |only |merely |simply )?[^.,;!?\\n]{1,40}, but (?:also )?\\w+",
+    "\\b(?:it|this|that|he|she|they) (?:wasn't|isn't|weren't|was not|is not|were not) (?:just |only |merely |simply )?[^.,;!?\\n]{1,40}[,;.] (?:it|this|that|he|she|they) (?:was|is|were)\\b",
+    "\\bnot (?:because|that) [^.;!?\\n]{1,60}, but because\\b",
+    "\\bnot (?:just |only )[^.,;!?\\n]{1,40}\\. (?:But|It|She|He|They)\\b"
+   ],
+   "max_per_1000": 1.5,
+   "min_count": 3,
+   "min_words": 200,
+   "examples": [
+    "It wasn't fear, it was dread. It was not anger, but grief. Not just a door, but a threshold. She wasn't tired; she was done. He did it not because he wanted to, but because he had to."
+   ],
+   "suggestion": "One per chapter is plenty. Rewrite some as direct statements."
+  },
+  {
+   "id": "structure-ing-opener",
+   "category": "structure",
+   "severity": "info",
+   "type": "density",
+   "message": "Many sentences opening with an -ing participle.",
+   "patterns": [
+    "(?:^|[.!?][\\\"')\\]]*\\s+)([A-Z][a-z]+ing)\\b"
+   ],
+   "max_per_1000": 5,
+   "min_count": 4,
+   "min_words": 200,
+   "examples": [
+    "Walking to the door, she paused. Turning slowly, he looked. Reaching out, she touched it. Smiling, he left. Thinking hard, they waited. Running late, I hurried."
+   ],
+   "suggestion": "Vary the sentence openings.",
+   "case_sensitive": true,
+   "exclude": [
+    "something",
+    "nothing",
+    "anything",
+    "everything",
+    "morning",
+    "evening",
+    "king",
+    "thing",
+    "spring",
+    "string",
+    "ring",
+    "wing",
+    "sing",
+    "bring",
+    "sting",
+    "during",
+    "following",
+    "pending",
+    "nothing's"
+   ]
+  },
+  {
+   "id": "structure-asking-narrator",
+   "category": "structure",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Rhetorical question aimed at the reader.",
+   "patterns": [
+    "\\bwhat (?:if|was|could)[^.?!\\n]{0,60}\\?\\s",
+    "\\bhow (?:could|had) (?:she|he|they|it) (?:have |possibly )?(?:missed|known|forgotten)\\b[^.?!\\n]{0,40}\\?"
+   ],
+   "examples": [
+    "What if it was all a lie? She stared."
+   ],
+   "suggestion": "Rhetorical question chains are a common AI tell. Use sparingly."
+  },
+  {
+   "id": "structure-colon-reveal",
+   "category": "structure",
+   "severity": "info",
+   "type": "pattern",
+   "message": "Colon followed by a dramatic reveal.",
+   "patterns": [
+    "\\b(?:one thing|one word|one name|one truth|one explanation|one reason|one answer|one option|one possibility|the truth|the answer|the reason|the problem|the catch)(?: was)?: "
+   ],
+   "examples": [
+    "There was only one explanation: she had lied.",
+    "The truth: nobody was coming."
+   ],
+   "suggestion": "Check that the reveal earns the drumroll."
+  },
+  {
+   "id": "rep-sentence-openers-run",
+   "category": "repetition",
+   "severity": "warn",
+   "type": "metric",
+   "metric": "repeated_openers",
+   "message": "Several sentences in a row open with the same word.",
+   "params": {
+    "run": 4
+   },
+   "suggestion": "Combine sentences or change a start."
+  },
+  {
+   "id": "rep-sentence-opener-share",
+   "category": "repetition",
+   "severity": "info",
+   "type": "metric",
+   "metric": "opener_share",
+   "message": "One word opens a large share of the sentences.",
+   "params": {
+    "min_sentences": 40,
+    "max_share": 0.25
+   },
+   "suggestion": "Vary how sentences begin. First person 'I' narration naturally scores high."
+  },
+  {
+   "id": "rep-ngram-phrases",
+   "category": "repetition",
+   "severity": "warn",
+   "type": "metric",
+   "metric": "ngram_repeat",
+   "message": "Phrase repeats often or in several chapters.",
+   "params": {
+    "n": 4,
+    "min_total": 4,
+    "min_chapters": 3,
+    "min_content_words": 2,
+    "max_report": 12
+   },
+   "suggestion": "Check whether the repetition is deliberate."
+  },
+  {
+   "id": "rep-name-frequency",
+   "category": "repetition",
+   "severity": "info",
+   "type": "metric",
+   "metric": "name_frequency",
+   "message": "A name appears very often.",
+   "params": {
+    "min_words": 500,
+    "min_mentions": 12,
+    "max_per_1000": 16,
+    "ignore": [
+     "i",
+     "monday",
+     "tuesday",
+     "wednesday",
+     "thursday",
+     "friday",
+     "saturday",
+     "sunday",
+     "january",
+     "february",
+     "march",
+     "april",
+     "may",
+     "june",
+     "july",
+     "august",
+     "september",
+     "october",
+     "november",
+     "december",
+     "god",
+     "mr",
+     "mrs",
+     "ms",
+     "dr"
+    ],
+    "max_report": 3
+   },
+   "suggestion": "Use pronouns or a role word now and then."
+  },
+  {
+   "id": "rep-echo-words",
+   "category": "repetition",
+   "severity": "info",
+   "type": "metric",
+   "metric": "echo_words",
+   "message": "Same uncommon word three times in a short stretch.",
+   "params": {
+    "window": 50,
+    "min_len": 6,
+    "repeats": 3,
+    "max_report": 10
+   },
+   "suggestion": "Swap one for another word or restructure."
+  },
+  {
+   "id": "rhythm-sentence-monotony",
+   "category": "rhythm",
+   "severity": "warn",
+   "type": "metric",
+   "metric": "sentence_length_monotony",
+   "message": "Sentence lengths barely vary over a long stretch.",
+   "params": {
+    "window": 10,
+    "max_cv": 0.3,
+    "min_mean": 6
+   },
+   "suggestion": "Mix short and long sentences."
+  },
+  {
+   "id": "rhythm-paragraph-monotony",
+   "category": "rhythm",
+   "severity": "info",
+   "type": "metric",
+   "metric": "paragraph_length_monotony",
+   "message": "Paragraphs are nearly the same length for a long stretch.",
+   "params": {
+    "window": 6,
+    "max_cv": 0.2,
+    "min_mean": 25
+   },
+   "suggestion": "Let paragraph length follow the action."
+  },
+  {
+   "id": "rhythm-staccato-streak",
+   "category": "rhythm",
+   "severity": "warn",
+   "type": "metric",
+   "metric": "short_sentence_streak",
+   "message": "Run of very short sentences inside one paragraph.",
+   "params": {
+    "run": 5,
+    "max_words": 5
+   },
+   "suggestion": "Fragments land best when they are rare."
+  },
+  {
+   "id": "rhythm-long-sentence",
+   "category": "rhythm",
+   "severity": "info",
+   "type": "metric",
+   "metric": "long_sentence",
+   "message": "Very long sentence.",
+   "params": {
+    "max_words": 55
+   },
+   "suggestion": "Consider splitting it."
+  },
+  {
+   "id": "rhythm-one-line-paragraphs",
+   "category": "rhythm",
+   "severity": "info",
+   "type": "metric",
+   "metric": "single_sentence_paragraph_share",
+   "message": "Large share of one-sentence narrative paragraphs.",
+   "params": {
+    "min_paragraphs": 12,
+    "max_share": 0.5
+   },
+   "suggestion": "Group related beats into fuller paragraphs."
+  },
+  {
+   "id": "rhythm-punchline-endings",
+   "category": "rhythm",
+   "severity": "warn",
+   "type": "metric",
+   "metric": "punchline_endings",
+   "message": "Many paragraphs end on a very short punch sentence after a long one.",
+   "params": {
+    "min_paragraphs": 12,
+    "min_prior_words": 14,
+    "max_tail_words": 4,
+    "max_share": 0.35
+   },
+   "suggestion": "End some paragraphs on the longer thought."
+  }
+ ]
+}

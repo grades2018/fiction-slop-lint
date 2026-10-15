@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fiction-slop-lint"
+version = "0.1.0"
+description = "Offline style linter for fiction manuscripts: flags cliches, overused phrases, repetition and rhythm habits. Not an AI detector."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "grades2018" }]
+keywords = ["fiction", "writing", "linter", "creative-writing", "novel", "manuscript", "style-guide", "cli"]
+classifiers = [
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "Programming Language :: Python :: 3",
+  "Topic :: Text Processing :: Linguistic",
+  "Topic :: Text Processing :: Markup :: Markdown",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/grades2018/fiction-slop-lint"
+Demo = "https://grades2018.github.io/fiction-slop-lint/"
+Issues = "https://github.com/grades2018/fiction-slop-lint/issues"
+
+[project.scripts]
+fiction-slop-lint = "fiction_slop_lint.cli:main"
+
+[tool.setuptools]
+packages = ["fiction_slop_lint"]
+
+[tool.setuptools.package-data]
+fiction_slop_lint = ["data/*.json"]

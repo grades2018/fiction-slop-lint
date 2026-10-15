@@ -1,0 +1,128 @@
+fiction-slop-lint 0.1.0 - a style linter for fiction. Not an AI detector.
+
+examples/01-cliche-heavy.md  (382 words, 35 sentences, 45 findings)
+  5:1      info  llm-stock-character-names          Names that language models reach for by default. Fine if intentional.
+                                                   > Elara
+  5:34     info  llm-stock-place-names              Place names that language models reach for by default.
+                                                   > Willowbrook
+  5:83     warn  llm-air-thick-with                 Air thick with tension, heavy with something.
+                                                   > The air was thick with
+  5:119    warn  llm-shiver-down-spine              Shiver-down-the-spine beat.
+                                                   > a shiver ran down
+  5:182    warn  llm-exhale-breath                  Let out a slow breath, a shaky exhale.
+                                                   > let out a breath
+  5:192    warn  llm-breath-not-know                The breath-you-did-not-know-you-were-holding line.
+                                                   > breath she didn't know
+  7:1      warn  body-heartbeat                     Heart pounding, racing or skipping.
+                                                   > Her heart pounded
+  7:37     warn  llm-eyes-sparkled                  Sparkling, twinkling or dancing eyes.
+                                                   > eyes sparkled
+  7:56     warn  llm-mix-of-emotions                'A mix of X and Y' emotion label.
+                                                   > a mix of fear and excitement
+  7:109    warn  body-knuckles-white                White knuckles.
+                                                   > until her knuckles
+  7:177    warn  llm-testament-to                   Stock praise phrase. A plain verb usually says it better.
+                                                   > a testament to
+  7:221    warn  llm-beacon-of-hope                 Beacon of hope, ray of light.
+                                                   > beacon of hope
+  9:2      info  dialogue-on-the-nose               Stock on-the-nose dialogue lines.
+                                                   > We need to talk
+  9:25     info  llm-stock-character-names          Names that language models reach for by default. Fine if intentional.
+                                                   > Kael
+  9:31     warn  llm-barely-whisper                 Barely-above-a-whisper voice.
+                                                   > barely above a whisper
+  11:15    warn  dialogue-adverb-tag                Adverb attached to a speech tag.
+                                                   > replied softly
+  11:31    info  body-voice-quality                 Voice cracking, wavering, dropping.
+                                                   > Her voice cracked
+  11:50    warn  rhythm-sentence-monotony           10 sentences averaging 10.8 words with little variation (cv 0.28)
+                                                   Sentence lengths barely vary over a long stretch.
+  11:53    info  body-gave-a-nod                    'Gave a small nod/shrug/smile' light-verb beat.
+                                                   > gave a small nod
+  11:74    warn  body-hand-hair                     Running a hand through hair or down the face.
+                                                   > ran a hand through his hair
+  13:2     info  dialogue-on-the-nose               Stock on-the-nose dialogue lines.
+                                                   > It's not what it looks like
+  13:35    warn  dialogue-adverb-tag                Adverb attached to a speech tag.
+                                                   > said urgently
+  13:54    warn  body-jaw                           Clenched, tightened or ticking jaw.
+                                                   > jaw clenched
+  13:69    warn  structure-not-x-but-y              3 occurrences, 7.9 per 1000 words (limit 1.5)
+                                                   Frequent 'not X, but Y' or 'it wasn't X, it was Y' contrast pattern.
+                                                   lines: 13, 19, 25
+  15:30    warn  simile-light-shadow                Dancing light, creeping shadow.
+                                                   > Shadows danced
+  15:91    warn  body-silence                       Silence stretching, hanging or settling.
+                                                   > silence stretched
+  15:123   warn  llm-wave-of-emotion                A wave, rush or surge of emotion.
+                                                   > A wave of relief
+  15:165   warn  llm-couldnt-help-but               'Couldn't help but' is a weak filler construction.
+                                                   > couldn't help but
+  15:190   warn  llm-little-did-she-know            Narrator-wink foreshadowing.
+                                                   > Little did she know
+  15:234   info  llm-foreshadow-cliche              Stock ominous foreshadowing.
+                                                   > would change everything
+  17:1     info  summary-time-skip                  Summary time-skip phrasing in place of a scene.
+                                                   > Over the next few weeks
+  17:31    info  summary-routine                    Habitual routine summary.
+                                                   > fell into a routine
+  17:52    info  summary-routine                    Habitual routine summary.
+                                                   > Every morning she
+  17:93    info  summary-routine                    Habitual routine summary.
+                                                   > every evening he
+  17:133   info  summary-time-skip                  Summary time-skip phrasing in place of a scene.
+                                                   > days turned into weeks
+  19:91    warn  simile-punch-to-gut                Like a punch or knife to the gut.
+                                                   > like a punch to the gut
+  19:132   warn  simile-cold-as-ice                 Stock temperature or colour simile.
+                                                   > black as night
+  19:152   warn  body-stomach                       Stomach dropping, churning or knotting.
+                                                   > stomach dropped
+  19:169   warn  body-time-stopped                  Time slowing or the world falling away.
+                                                   > Time seemed to slow
+  23:1     warn  telling-epiphany                   Announced realization.
+                                                   > In that moment, she realized
+  23:43    warn  llm-moral-ending                   Tidy lesson or 'journey just begun' closing line.
+                                                   > would ever be the same
+  23:67    info  llm-weight-of                      The weight of something as a figurative load.
+                                                   > The weight of the secret
+  23:129   warn  body-tears                         Tears pricking, welling or spilling.
+                                                   > Tears welled
+  23:163   warn  body-throat-lump                   Swallowing hard, lump in the throat.
+                                                   > swallowed hard
+  25:192   warn  llm-moral-ending                   Tidy lesson or 'journey just begun' closing line.
+                                                   > this was only the beginning
+
+examples/02-plain-scene.md  (335 words, 30 sentences, 0 findings)
+  no findings
+
+examples/03-three-chapters.md  (304 words, 42 sentences, 7 findings)
+  3:1      info  rhythm-paragraph-monotony          6 paragraphs averaging 50.7 words with little variation (cv 0.09)
+                                                   Paragraphs are nearly the same length for a long stretch.
+  3:41     info  rep-sentence-opener-share          'she' opens 23 of 42 sentences (55%)
+                                                   One word opens a large share of the sentences.
+  3:41     warn  rep-sentence-openers-run           7 sentences in a row start with 'She'
+                                                   Several sentences in a row open with the same word.
+  5:123    warn  rhythm-sentence-monotony           10 sentences averaging 7.2 words with little variation (cv 0.30)
+                                                   Sentence lengths barely vary over a long stretch.
+  9:126    warn  rep-sentence-openers-run           4 sentences in a row start with 'She'
+                                                   Several sentences in a row open with the same word.
+  9:192    info  rep-echo-words                     'looked' used 3 times within 50 words
+                                                   Same uncommon word three times in a short stretch.
+  15:101   warn  rep-sentence-openers-run           5 sentences in a row start with 'She'
+                                                   Several sentences in a row open with the same word.
+
+Repeated phrases across the whole input
+  warn  rep-ngram-phrases                  'the new teacher he' appears 3 times in 3 chapter(s)
+                                           first at examples/03-three-chapters.md:5, examples/03-three-chapters.md:11, examples/03-three-chapters.md:17
+  warn  rep-ngram-phrases                  'not say anything else' appears 3 times in 3 chapter(s)
+                                           first at examples/03-three-chapters.md:5, examples/03-three-chapters.md:11, examples/03-three-chapters.md:17
+
+Summary
+  3 file(s), 1021 words, 54 findings
+  errors 0, warnings 37, info 17
+  warnings+errors per 1000 words: 36.2
+  by category: body-cliche 11, dialogue 4, llm-phrase 19, repetition 7, rhythm 3, simile-cliche 3, structure 1, summary 5, telling 1
+  strict: FAIL (max errors 0, max warnings 25, max per 1000 8.0)
+
+Findings are style hints, not proof of how a text was written. Expect false positives.

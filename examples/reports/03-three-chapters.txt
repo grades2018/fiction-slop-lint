@@ -1,0 +1,45 @@
+fiction-slop-lint 0.1.0 - a style linter for fiction. Not an AI detector.
+
+examples/03-three-chapters.md  (304 words, 42 sentences, 7 findings)
+  3:1      info  rhythm-paragraph-monotony          6 paragraphs averaging 50.7 words with little variation (cv 0.09)
+                                                   Paragraphs are nearly the same length for a long stretch.
+                                                   > The harbor was quiet when Nora
+                                                   tip: Let paragraph length follow the action.
+  3:41     info  rep-sentence-opener-share          'she' opens 23 of 42 sentences (55%)
+                                                   One word opens a large share of the sentences.
+                                                   > was quiet when Nora arrived. She stood at the end of the pier
+                                                   tip: Vary how sentences begin. First person 'I' narration naturally scores high.
+  3:41     warn  rep-sentence-openers-run           7 sentences in a row start with 'She'
+                                                   Several sentences in a row open with the same word.
+                                                   > was quiet when Nora arrived. She stood at the end of the pier
+                                                   tip: Combine sentences or change a start.
+  5:123    warn  rhythm-sentence-monotony           10 sentences averaging 7.2 words with little variation (cv 0.30)
+                                                   Sentence lengths barely vary over a long stretch.
+                                                   > acher," he said. Nora nodded. She did not say anything else.
+                                                   tip: Mix short and long sentences.
+  9:126    warn  rep-sentence-openers-run           4 sentences in a row start with 'She'
+                                                   Several sentences in a row open with the same word.
+                                                   > ed the door to the classroom. She put her bag on the desk. She
+                                                   tip: Combine sentences or change a start.
+  9:192    info  rep-echo-words                     'looked' used 3 times within 50 words
+                                                   Same uncommon word three times in a short stretch.
+                                                   > te her name on the board. She looked at the empty chairs. She wond
+                                                   tip: Swap one for another word or restructure.
+  15:101   warn  rep-sentence-openers-run           5 sentences in a row start with 'She'
+                                                   Several sentences in a row open with the same word.
+                                                   > orning and watched the boats. She knew the names of the fisherm
+                                                   tip: Combine sentences or change a start.
+
+Repeated phrases across the whole input
+  warn  rep-ngram-phrases                  'the new teacher he' appears 3 times in 3 chapter(s)
+                                           first at examples/03-three-chapters.md:5, examples/03-three-chapters.md:11, examples/03-three-chapters.md:17
+  warn  rep-ngram-phrases                  'not say anything else' appears 3 times in 3 chapter(s)
+                                           first at examples/03-three-chapters.md:5, examples/03-three-chapters.md:11, examples/03-three-chapters.md:17
+
+Summary
+  1 file(s), 304 words, 9 findings
+  errors 0, warnings 6, info 3
+  warnings+errors per 1000 words: 19.7
+  by category: repetition 7, rhythm 2
+
+Findings are style hints, not proof of how a text was written. Expect false positives.

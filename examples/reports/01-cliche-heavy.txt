@@ -1,0 +1,149 @@
+fiction-slop-lint 0.1.0 - a style linter for fiction. Not an AI detector.
+
+examples/01-cliche-heavy.md  (382 words, 35 sentences, 45 findings)
+  5:1      info  llm-stock-character-names          Names that language models reach for by default. Fine if intentional.
+                                                   > Not a model of good prose. Elara walked into the village of Wi
+                                                   tip: Check whether the name is a deliberate choice.
+  5:34     info  llm-stock-place-names              Place names that language models reach for by default.
+                                                   > ra walked into the village of Willowbrook on a cold, gray morning in No
+                                                   tip: Check whether the name is a deliberate choice.
+  5:83     warn  llm-air-thick-with                 Air thick with tension, heavy with something.
+                                                   > ld, gray morning in November. The air was thick with tension, and a shiver ran dow
+                                                   tip: Show what people do when tension is in the room.
+  5:119    warn  llm-shiver-down-spine              Shiver-down-the-spine beat.
+                                                   > r was thick with tension, and a shiver ran down her spine as the old bell beg
+                                                   tip: Show the specific thing the body does, or cut the beat.
+  5:182    warn  llm-exhale-breath                  Let out a slow breath, a shaky exhale.
+                                                   > e old bell began to toll. She let out a breath she didn't know she was holdi
+                                                   tip: Characters breathe constantly. Keep it for moments where it changes something.
+  5:192    warn  llm-breath-not-know                The breath-you-did-not-know-you-were-holding line.
+                                                   > began to toll. She let out a breath she didn't know she was holding. Her heart p
+                                                   tip: Cut it. If the character is tense, show the tension another way.
+  7:1      warn  body-heartbeat                     Heart pounding, racing or skipping.
+                                                   > didn't know she was holding. Her heart pounded in her chest. Her eyes sparkl
+                                                   tip: Pick one fresh physical sign or none.
+  7:37     warn  llm-eyes-sparkled                  Sparkling, twinkling or dancing eyes.
+                                                   > art pounded in her chest. Her eyes sparkled with a mix of fear and excite
+                                                   tip: Pick a behaviour that shows the mood.
+  7:56     warn  llm-mix-of-emotions                'A mix of X and Y' emotion label.
+                                                   > chest. Her eyes sparkled with a mix of fear and excitement as she gripped the rail until
+                                                   tip: Show one precise action instead of naming two feelings.
+  7:109    warn  body-knuckles-white                White knuckles.
+                                                   > ement as she gripped the rail until her knuckles turned white. The lighthouse
+                                                   tip: Try what the hand does with the object.
+  7:177    warn  llm-testament-to                   Stock praise phrase. A plain verb usually says it better.
+                                                   > ighthouse stood on the cliff, a testament to the town's stubborn pride, a
+                                                   tip: Say what the thing shows, with a concrete detail.
+  7:221    warn  llm-beacon-of-hope                 Beacon of hope, ray of light.
+                                                   > the town's stubborn pride, a beacon of hope against the dark. "We need t
+                                                   tip: Be specific about what she hopes for.
+  9:2      info  dialogue-on-the-nose               Stock on-the-nose dialogue lines.
+                                                   > n of hope against the dark. "We need to talk," said Kael, barely above a w
+                                                   tip: Let characters talk around the issue.
+  9:25     info  llm-stock-character-names          Names that language models reach for by default. Fine if intentional.
+                                                   > ark. "We need to talk," said Kael, barely above a whisper. "I
+                                                   tip: Check whether the name is a deliberate choice.
+  9:31     warn  llm-barely-whisper                 Barely-above-a-whisper voice.
+                                                   > "We need to talk," said Kael, barely above a whisper. "I know," she replied softl
+                                                   tip: Use the line of dialogue itself to carry the quiet.
+  11:15    warn  dialogue-adverb-tag                Adverb attached to a speech tag.
+                                                   > ove a whisper. "I know," she replied softly. Her voice cracked. He gave a
+                                                   tip: Make the line carry the tone. Use 'said' or a beat.
+  11:31    info  body-voice-quality                 Voice cracking, wavering, dropping.
+                                                   > "I know," she replied softly. Her voice cracked. He gave a small nod and ran
+                                                   tip: Let the words carry the tone.
+  11:50    warn  rhythm-sentence-monotony           10 sentences averaging 10.8 words with little variation (cv 0.28)
+                                                   Sentence lengths barely vary over a long stretch.
+                                                   > ed softly. Her voice cracked. He gave a small nod and ran a h
+                                                   tip: Mix short and long sentences.
+  11:53    info  body-gave-a-nod                    'Gave a small nod/shrug/smile' light-verb beat.
+                                                   > softly. Her voice cracked. He gave a small nod and ran a hand through his ha
+                                                   tip: Use the verb directly: she nodded.
+  11:74    warn  body-hand-hair                     Running a hand through hair or down the face.
+                                                   > cked. He gave a small nod and ran a hand through his hair. "It's not what it looks lik
+                                                   tip: Stock gesture. Replace or cut.
+  13:2     info  dialogue-on-the-nose               Stock on-the-nose dialogue lines.
+                                                   > an a hand through his hair. "It's not what it looks like," he said urgently, his jaw c
+                                                   tip: Let characters talk around the issue.
+  13:35    warn  dialogue-adverb-tag                Adverb attached to a speech tag.
+                                                   > s not what it looks like," he said urgently, his jaw clenched. "It wasn't
+                                                   tip: Make the line carry the tone. Use 'said' or a beat.
+  13:54    warn  body-jaw                           Clenched, tightened or ticking jaw.
+                                                   > like," he said urgently, his jaw clenched. "It wasn't greed, it was fea
+                                                   tip: A very common beat. Show anger in a choice.
+  13:69    warn  structure-not-x-but-y              3 occurrences, 7.9 per 1000 words (limit 1.5)
+                                                   Frequent 'not X, but Y' or 'it wasn't X, it was Y' contrast pattern.
+                                                   > urgently, his jaw clenched. "It wasn't greed, it was fear." Suddenly the wind pic
+                                                   lines: 13, 19, 25
+                                                   tip: One per chapter is plenty. Rewrite some as direct statements.
+  15:30    warn  simile-light-shadow                Dancing light, creeping shadow.
+                                                   > Suddenly the wind picked up. Shadows danced on the walls of the keeper's
+                                                   tip: Be specific about the source and the room.
+  15:91    warn  body-silence                       Silence stretching, hanging or settling.
+                                                   > the keeper's cottage, and the silence stretched between them. A wave of relie
+                                                   tip: Describe what is audible in the quiet.
+  15:123   warn  llm-wave-of-emotion                A wave, rush or surge of emotion.
+                                                   > lence stretched between them. A wave of relief washed over her, and she coul
+                                                   tip: Show the reaction in the body or in a choice.
+  15:165   warn  llm-couldnt-help-but               'Couldn't help but' is a weak filler construction.
+                                                   > lief washed over her, and she couldn't help but smile. Little did she know, t
+                                                   tip: Use the direct verb.
+  15:190   warn  llm-little-did-she-know            Narrator-wink foreshadowing.
+                                                   > she couldn't help but smile. Little did she know, the letter in his coat would
+                                                   tip: Let the later scene prove it instead of announcing it.
+  15:234   info  llm-foreshadow-cliche              Stock ominous foreshadowing.
+                                                   > know, the letter in his coat would change everything. Over the next few weeks, th
+                                                   tip: Trust the plot to carry the stakes.
+  17:1     info  summary-time-skip                  Summary time-skip phrasing in place of a scene.
+                                                   > oat would change everything. Over the next few weeks, they fell into a routine. Ev
+                                                   tip: If it matters, dramatize one moment of the period.
+  17:31    info  summary-routine                    Habitual routine summary.
+                                                   > Over the next few weeks, they fell into a routine. Every morning she climbed th
+                                                   tip: Pick one specific morning and play it.
+  17:52    info  summary-routine                    Habitual routine summary.
+                                                   > ks, they fell into a routine. Every morning she climbed the tower, and every
+                                                   tip: Pick one specific morning and play it.
+  17:93    info  summary-routine                    Habitual routine summary.
+                                                   > ng she climbed the tower, and every evening he rewound the clock. The days t
+                                                   tip: Pick one specific morning and play it.
+  17:133   info  summary-time-skip                  Summary time-skip phrasing in place of a scene.
+                                                   > ing he rewound the clock. The days turned into weeks, and the weeks into months. S
+                                                   tip: If it matters, dramatize one moment of the period.
+  19:91    warn  simile-punch-to-gut                Like a punch or knife to the gut.
+                                                   > g. The sea hammered the rocks like a punch to the gut, and the sky was black as nig
+                                                   tip: Use a literal reaction.
+  19:132   warn  simile-cold-as-ice                 Stock temperature or colour simile.
+                                                   > h to the gut, and the sky was black as night. Her stomach dropped. Time se
+                                                   tip: Invent something that belongs to your setting.
+  19:152   warn  body-stomach                       Stomach dropping, churning or knotting.
+                                                   > e sky was black as night. Her stomach dropped. Time seemed to slow as the l
+                                                   tip: Replace with a particular sensation.
+  19:169   warn  body-time-stopped                  Time slowing or the world falling away.
+                                                   > s night. Her stomach dropped. Time seemed to slow as the lamp flickered and die
+                                                   tip: Use sparingly, once per book at most.
+  23:1     warn  telling-epiphany                   Announced realization.
+                                                   > n!" he shouted, and she ran. In that moment, she realized that nothing would ever be th
+                                                   tip: Let readers make the connection from the evidence.
+  23:43    warn  llm-moral-ending                   Tidy lesson or 'journey just begun' closing line.
+                                                   > nt, she realized that nothing would ever be the same. The weight of the secret pre
+                                                   tip: End the scene on an image or an action, not a summary lesson.
+  23:67    info  llm-weight-of                      The weight of something as a figurative load.
+                                                   > thing would ever be the same. The weight of the secret pressed down on her, heavy an
+                                                   tip: Use only if the weight is literal or earned.
+  23:129   warn  body-tears                         Tears pricking, welling or spilling.
+                                                   > down on her, heavy and cold. Tears welled in her eyes, and she swallowe
+                                                   tip: Let the reader get there from the situation.
+  23:163   warn  body-throat-lump                   Swallowing hard, lump in the throat.
+                                                   > s welled in her eyes, and she swallowed hard. Walking toward the edge, sh
+                                                   tip: Vary the nervous tell.
+  25:192   warn  llm-moral-ending                   Tidy lesson or 'journey just begun' closing line.
+                                                   > pulled at her boots, she knew this was only the beginning of her journey.
+                                                   tip: End the scene on an image or an action, not a summary lesson.
+
+Summary
+  1 file(s), 382 words, 45 findings
+  errors 0, warnings 31, info 14
+  warnings+errors per 1000 words: 81.2
+  by category: body-cliche 11, dialogue 4, llm-phrase 19, rhythm 1, simile-cliche 3, structure 1, summary 5, telling 1
+
+Findings are style hints, not proof of how a text was written. Expect false positives.

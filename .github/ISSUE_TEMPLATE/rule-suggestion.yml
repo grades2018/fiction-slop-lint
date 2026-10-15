@@ -1,0 +1,23 @@
+name: Rule suggestion
+description: Propose a new rule or a change to an existing one.
+labels: ["rule"]
+body:
+  - type: textarea
+    id: rule
+    attributes:
+      label: What should be flagged?
+      description: Describe the pattern in your own words and give two or three example sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: counter
+    attributes:
+      label: When would it be a false alarm?
+      description: Every rule should come with a sentence that shows where it misfires.
+  - type: checkboxes
+    id: original
+    attributes:
+      label: Originality
+      options:
+        - label: I wrote this description myself and am not pasting a rule list from another project.
+          required: true

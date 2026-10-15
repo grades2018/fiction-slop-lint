@@ -1,0 +1,30 @@
+{
+  "tool": "fiction-slop-lint",
+  "version": "0.1.0",
+  "disclaimer": "Style linter only. Findings are hints, not proof of how a text was written.",
+  "files": [
+    {
+      "path": "examples/02-plain-scene.md",
+      "words": 335,
+      "sentences": 30,
+      "paragraphs": 11,
+      "chapters": [
+        "Night Shift at the Depot"
+      ],
+      "findings": []
+    }
+  ],
+  "corpus": [],
+  "summary": {
+    "files": 1,
+    "words": 335,
+    "findings": 0,
+    "by_severity": {
+      "error": 0,
+      "warn": 0,
+      "info": 0
+    },
+    "by_category": {},
+    "warn_and_error_per_1000_words": 0.0
+  }
+}
