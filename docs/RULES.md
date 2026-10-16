@@ -14,6 +14,7 @@ Generated with `fiction-slop-lint --list-rules --markdown`. Severity: `error` fo
 | `llm-delve` | llm-phrase | warn | pattern | 'Delve' is a very frequent assistant-style verb. |
 | `llm-realm-of` | llm-phrase | info | pattern | 'Realm of' as filler. |
 | `llm-air-thick-with` | llm-phrase | warn | pattern | Air thick with tension, heavy with something. |
+| `llm-palpable-sense-of` | llm-phrase | warn | pattern | Palpable tension, or a sense of something washing over a character. |
 | `llm-symphony-of` | llm-phrase | warn | pattern | Symphony, kaleidoscope or dance of abstractions. |
 | `llm-myriad` | llm-phrase | info | pattern | 'Myriad' is a frequent filler. |
 | `llm-beacon-of-hope` | llm-phrase | warn | pattern | Beacon of hope, ray of light. |
@@ -100,4 +101,4 @@ Generated with `fiction-slop-lint --list-rules --markdown`. Severity: `error` fo
 | `rhythm-one-line-paragraphs` | rhythm | info | metric | Large share of one-sentence narrative paragraphs. |
 | `rhythm-punchline-endings` | rhythm | warn | metric | Many paragraphs end on a very short punch sentence after a long one. |
 
-95 rules in 9 categories.
+96 rules in 9 categories.

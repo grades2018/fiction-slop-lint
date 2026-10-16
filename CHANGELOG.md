@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- New rule `llm-palpable-sense-of` (warn): flags "the tension was palpable" and "a sense of calm washed over her" style emotion labels. 96 rules total.
+
 ## 0.1.0 - 2026-10-15
 
 First release.

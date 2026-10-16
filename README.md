@@ -5,7 +5,7 @@
 An offline **style linter for fiction manuscripts**. It scans Markdown, plain text or Word files and points at stock phrases, cliche beats, repeated phrases, and rhythm habits, with line numbers, like a code linter does for code.
 
 - Python 3.9+, **standard library only**, one command: `fiction-slop-lint FILE...`
-- **95 original rules** in one editable JSON file, not hidden in code
+- **96 original rules** in one editable JSON file, not hidden in code
 - Plain text report or `--json`, and `--strict` exit codes for scripts and CI
 - A single-page **browser version** that runs locally with the same rules: **[try it](https://grades2018.github.io/fiction-slop-lint/)** (nothing is uploaded)
 - A [`SKILL.md`](SKILL.md) so coding agents can run it on a manuscript folder
@@ -84,7 +84,7 @@ Full reports for three example texts are in [`examples/reports`](examples/report
 
 ## What it checks
 
-95 rules in 9 categories. Every rule has an id, a severity (`info`, `warn`, `error`), a message and, for pattern rules, examples that the tests check. The complete table is in [`docs/RULES.md`](docs/RULES.md).
+96 rules in 9 categories. Every rule has an id, a severity (`info`, `warn`, `error`), a message and, for pattern rules, examples that the tests check. The complete table is in [`docs/RULES.md`](docs/RULES.md).
 
 | Category | Rules | What it looks for |
 |---|---|---|

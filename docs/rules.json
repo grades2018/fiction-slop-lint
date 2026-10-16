@@ -330,6 +330,23 @@
    "suggestion": "Show what people do when tension is in the room."
   },
   {
+   "id": "llm-palpable-sense-of",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Palpable tension, or a sense of something washing over a character.",
+   "patterns": [
+    "\\b(?:tension|silence|fear|grief|relief|excitement|anticipation|energy|anger)(?: in the \\w+| between them)? (?:was|felt|grew|became) (?:almost )?palpable\\b",
+    "\\ba palpable (?:sense|tension|silence|fear|energy|relief|excitement|unease)\\b",
+    "\\ba (?:deep |strange |growing |profound |sudden |sinking )?sense of (?:unease|dread|foreboding|calm|peace|purpose|belonging|wonder|urgency|loss) (?:washed|settled|crept|swept|came|fell) over\\b"
+   ],
+   "examples": [
+    "The tension in the room was palpable.",
+    "A strange sense of calm washed over her."
+   ],
+   "suggestion": "Name the physical detail that makes the feeling real instead of labelling it."
+  },
+  {
    "id": "llm-symphony-of",
    "category": "llm-phrase",
    "severity": "warn",
