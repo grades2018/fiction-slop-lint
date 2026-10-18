@@ -27,6 +27,7 @@ Generated with `fiction-slop-lint --list-rules --markdown`. Severity: `error` fo
 | `llm-exhale-breath` | llm-phrase | warn | pattern | Let out a slow breath, a shaky exhale. |
 | `llm-emotion-etched` | llm-phrase | warn | pattern | Emotion etched, flickered or crossed a face. |
 | `llm-moral-ending` | llm-phrase | warn | pattern | Tidy lesson or 'journey just begun' closing line. |
+| `llm-maybe-just-maybe` | llm-phrase | warn | pattern | 'Maybe, just maybe' hope beat, or 'for the first time in a long time'. |
 | `llm-foreshadow-cliche` | llm-phrase | info | pattern | Stock ominous foreshadowing. |
 | `llm-stock-character-names` | llm-phrase | info | pattern | Names that language models reach for by default. Fine if intentional. |
 | `llm-stock-place-names` | llm-phrase | info | pattern | Place names that language models reach for by default. |
@@ -101,4 +102,4 @@ Generated with `fiction-slop-lint --list-rules --markdown`. Severity: `error` fo
 | `rhythm-one-line-paragraphs` | rhythm | info | metric | Large share of one-sentence narrative paragraphs. |
 | `rhythm-punchline-endings` | rhythm | warn | metric | Many paragraphs end on a very short punch sentence after a long one. |
 
-96 rules in 9 categories.
+97 rules in 9 categories.

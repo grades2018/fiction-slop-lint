@@ -535,6 +535,22 @@
    "suggestion": "End the scene on an image or an action, not a summary lesson."
   },
   {
+   "id": "llm-maybe-just-maybe",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "'Maybe, just maybe' hope beat, or 'for the first time in a long time'.",
+   "patterns": [
+    "\\b(?:maybe,? just maybe|perhaps,? just perhaps)\\b",
+    "\\bfor the first time in (?:a long time|a long while|years|months|forever|what felt like (?:years|forever|an eternity|a lifetime))\\b"
+   ],
+   "examples": [
+    "Maybe, just maybe, they would make it home.",
+    "For the first time in a long time, she felt hope."
+   ],
+   "suggestion": "Let the hope show in a choice or an action, and cut the hedge."
+  },
+  {
    "id": "llm-foreshadow-cliche",
    "category": "llm-phrase",
    "severity": "info",

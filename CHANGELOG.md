@@ -3,6 +3,8 @@
 ## Unreleased
 
 - New rule `llm-palpable-sense-of` (warn): flags "the tension was palpable" and "a sense of calm washed over her" style emotion labels. 96 rules total.
+- New rule `llm-maybe-just-maybe` (warn): flags "maybe, just maybe" and "for the first time in a long time" hope beats. 97 rules total.
+- README: llm-phrase category count corrected to 31.
 
 ## 0.1.0 - 2026-10-15
 

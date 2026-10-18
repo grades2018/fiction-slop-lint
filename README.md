@@ -5,7 +5,7 @@
 An offline **style linter for fiction manuscripts**. It scans Markdown, plain text or Word files and points at stock phrases, cliche beats, repeated phrases, and rhythm habits, with line numbers, like a code linter does for code.
 
 - Python 3.9+, **standard library only**, one command: `fiction-slop-lint FILE...`
-- **96 original rules** in one editable JSON file, not hidden in code
+- **97 original rules** in one editable JSON file, not hidden in code
 - Plain text report or `--json`, and `--strict` exit codes for scripts and CI
 - A single-page **browser version** that runs locally with the same rules: **[try it](https://grades2018.github.io/fiction-slop-lint/)** (nothing is uploaded)
 - A [`SKILL.md`](SKILL.md) so coding agents can run it on a manuscript folder
@@ -84,11 +84,11 @@ Full reports for three example texts are in [`examples/reports`](examples/report
 
 ## What it checks
 
-96 rules in 9 categories. Every rule has an id, a severity (`info`, `warn`, `error`), a message and, for pattern rules, examples that the tests check. The complete table is in [`docs/RULES.md`](docs/RULES.md).
+97 rules in 9 categories. Every rule has an id, a severity (`info`, `warn`, `error`), a message and, for pattern rules, examples that the tests check. The complete table is in [`docs/RULES.md`](docs/RULES.md).
 
 | Category | Rules | What it looks for |
 |---|---|---|
-| `llm-phrase` | 29 | Phrases and words that are everywhere in rushed or machine-written prose: "a testament to", "tapestry", "a shiver ran down", "little did she know", "barely above a whisper", the breath she did not know she was holding, "delve", tidy closing lines, default character and place names, and leftover chatbot text (`error`) |
+| `llm-phrase` | 31 | Phrases and words that are everywhere in rushed or machine-written prose: "a testament to", "tapestry", "a shiver ran down", "little did she know", "barely above a whisper", the breath she did not know she was holding, "delve", tidy closing lines, default character and place names, and leftover chatbot text (`error`) |
 | `body-cliche` | 18 | Stock body language: pounding hearts, clenched jaws, white knuckles, dropping stomachs, narrowing eyes, hands through hair, hanging silences |
 | `simile-cliche` | 9 | Stock similes, dancing light and shadow, weather and wake-up openings |
 | `dialogue` | 7 | Adverbs on tags, showy speech verbs, smiles used as tags, on-the-nose lines, density of `-ly` adverbs |
