@@ -62,6 +62,27 @@ Exit codes: `0` ok, `1` strict thresholds exceeded, `2` usage or input error. Wi
 
 `.docx` files are read with `zipfile` and `xml.etree` from the standard library. Heading styles become chapter breaks. Only body text is read (no comments, footnotes or tracked deletions).
 
+### Use in CI
+
+`--strict` makes the tool usable as a style gate in any CI. A minimal GitHub Actions workflow, saved as `.github/workflows/style.yml` in a repo that keeps its manuscript in `manuscript/`:
+
+```yaml
+name: style
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install git+https://github.com/grades2018/fiction-slop-lint@v0.1.0
+      - run: fiction-slop-lint manuscript/ --strict --max-warnings 25 --max-per-1000 8
+```
+
+Pinning a tag keeps results stable between runs. Use `@main` instead to pick up new rules as they land. The job fails only when a threshold is exceeded, so tune `--max-warnings` and `--max-per-1000` to your draft before making it required.
+
 ### Sample output
 
 From `examples/01-cliche-heavy.md` (deliberately over-cliched text written for this repo):
