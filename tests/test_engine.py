@@ -63,6 +63,30 @@ class PatternTests(unittest.TestCase):
         self.assertEqual(set(ids(rep)), {"llm-assistant-leak"})
 
 
+class NearMissTests(unittest.TestCase):
+    """Plain sentences that share words with newer phrase rules but should stay clean."""
+
+    def test_palpable_and_sense_of_near_misses(self):
+        for text in [
+            "She had a good sense of humor.",
+            "The sense of smell came back slowly.",
+            "A sense of direction would help.",
+            "The tension rod fell.",
+            "His palpitations eased.",
+        ]:
+            self.assertNotIn("llm-palpable-sense-of", ids(analyze(text)), text)
+        self.assertIn("llm-palpable-sense-of", ids(analyze("A sense of dread crept over him.")))
+
+    def test_maybe_and_first_time_near_misses(self):
+        for text in [
+            "Maybe she would come back.",
+            "Maybe. Just ask him.",
+            "For the first time, she spoke.",
+            "It was the first time in years that the mill had flooded.",
+        ]:
+            self.assertNotIn("llm-maybe-just-maybe", ids(analyze(text)), text)
+        self.assertIn("llm-maybe-just-maybe", ids(analyze("Perhaps, just perhaps, he lied.")))
+
 class DensityAndMetricTests(unittest.TestCase):
     def test_density_needs_min_words(self):
         short = "He stopped\u2014then ran\u2014and she followed\u2014slowly\u2014into the dark\u2014alone."

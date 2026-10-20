@@ -6,6 +6,7 @@
 - New rule `llm-maybe-just-maybe` (warn): flags "maybe, just maybe" and "for the first time in a long time" hope beats. 97 rules total.
 - README: llm-phrase category count corrected to 31.
 - README: new "Use in CI" section with a minimal GitHub Actions workflow for `--strict`.
+- Tests: near-miss cases for `llm-palpable-sense-of` and `llm-maybe-just-maybe` (for example "a sense of humor" and "Maybe she would come back." stay clean).
 
 ## 0.1.0 - 2026-10-15
 
