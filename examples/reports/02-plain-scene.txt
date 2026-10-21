@@ -1,4 +1,4 @@
-fiction-slop-lint 0.1.0 - a style linter for fiction. Not an AI detector.
+fiction-slop-lint 0.1.1 - a style linter for fiction. Not an AI detector.
 
 examples/02-plain-scene.md  (335 words, 30 sentences, 0 findings)
   no findings

@@ -1,6 +1,6 @@
 {
   "tool": "fiction-slop-lint",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "disclaimer": "Style linter only. Findings are hints, not proof of how a text was written.",
   "files": [
     {

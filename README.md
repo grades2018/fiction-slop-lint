@@ -77,7 +77,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install git+https://github.com/grades2018/fiction-slop-lint@v0.1.0
+      - run: pip install git+https://github.com/grades2018/fiction-slop-lint@v0.1.1
       - run: fiction-slop-lint manuscript/ --strict --max-warnings 25 --max-per-1000 8
 ```
 
@@ -88,7 +88,7 @@ Pinning a tag keeps results stable between runs. Use `@main` instead to pick up 
 From `examples/01-cliche-heavy.md` (deliberately over-cliched text written for this repo):
 
 ```
-fiction-slop-lint 0.1.0 - a style linter for fiction. Not an AI detector.
+fiction-slop-lint 0.1.1 - a style linter for fiction. Not an AI detector.
 
 examples/01-cliche-heavy.md  (382 words, 35 sentences, 45 findings)
   5:83     warn  llm-air-thick-with                 Air thick with tension, heavy with something.

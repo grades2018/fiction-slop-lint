@@ -1,4 +1,4 @@
-fiction-slop-lint 0.1.0 - a style linter for fiction. Not an AI detector.
+fiction-slop-lint 0.1.1 - a style linter for fiction. Not an AI detector.
 
 examples/01-cliche-heavy.md  (382 words, 35 sentences, 45 findings)
   5:1      info  llm-stock-character-names          Names that language models reach for by default. Fine if intentional.

@@ -60,7 +60,7 @@ Exit codes: `0` ok, `1` strict thresholds exceeded, `2` usage or input error.
 
 ```
 {
-  "tool": "fiction-slop-lint", "version": "0.1.0",
+  "tool": "fiction-slop-lint", "version": "0.1.1",
   "files": [{"path": "...", "words": 0, "sentences": 0, "chapters": ["..."],
              "findings": [{"rule": "llm-testament-to", "category": "llm-phrase", "severity": "warn",
                             "message": "...", "line": 3, "column": 29, "match": "...", "context": "...",

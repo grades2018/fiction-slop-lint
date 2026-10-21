@@ -10,7 +10,7 @@
 })(typeof self !== "undefined" ? self : this, function () {
   "use strict";
 
-  var VERSION = "0.1.0";
+  var VERSION = "0.1.1";
   var TRANSLATE = {
     "\u2018": "'", "\u2019": "'", "\u201a": "'", "\u2032": "'",
     "\u201c": '"', "\u201d": '"', "\u201e": '"', "\u00a0": " ", "\ufeff": " "
