@@ -87,6 +87,21 @@ class NearMissTests(unittest.TestCase):
             self.assertNotIn("llm-maybe-just-maybe", ids(analyze(text)), text)
         self.assertIn("llm-maybe-just-maybe", ids(analyze("Perhaps, just perhaps, he lied.")))
 
+    def test_weight_of_literal_near_misses(self):
+        for text in [
+            "He checked the weight of the cargo on the manifest.",
+            "She guessed the weight of her suitcase.",
+            "The weight of the anchor was printed on the chain.",
+        ]:
+            self.assertNotIn("llm-weight-of", ids(analyze(text)), text)
+        for text in [
+            "She felt the weight of his words.",
+            "The weight of the world sat on him.",
+            "He carried the weight of it all.",
+            "The crushing weight of guilt kept her awake.",
+        ]:
+            self.assertIn("llm-weight-of", ids(analyze(text)), text)
+
 class DensityAndMetricTests(unittest.TestCase):
     def test_density_needs_min_words(self):
         short = "He stopped\u2014then ran\u2014and she followed\u2014slowly\u2014into the dark\u2014alone."

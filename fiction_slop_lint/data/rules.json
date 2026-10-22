@@ -472,10 +472,11 @@
    "type": "pattern",
    "message": "The weight of something as a figurative load.",
    "patterns": [
-    "\\bthe weight of (?:the |his |her |their |my |it |what |everything |responsibility|expectation|guilt|grief|loss|silence|truth|history)\\w*"
+    "\\bthe (?:full |crushing |sheer )?weight of (?:it all|it|everything|what (?:had|she|he|they|I|we) \\w+|(?:(?:the|his|her|their|my|your|our|its|this|that) )?(?:\\w+ )?(?:words?|world|silence|grief|guilt|loss|truth|history|responsibilit(?:y|ies)|expectations?|decisions?|choices?|years|memor(?:y|ies)|secrets?|past|future|lies|betrayal|regret|sorrow|shame|failure|duty|command|crown|stare|gaze|situation|moment|mistakes?|sins?))\\b"
    ],
    "examples": [
-    "She felt the weight of his words."
+    "She felt the weight of his words.",
+    "The weight of everything she had lost pressed on her."
    ],
    "suggestion": "Use only if the weight is literal or earned."
   },

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- `llm-weight-of` narrowed to figurative objects (words, world, guilt, grief, it all, and similar), so literal uses like "the weight of the cargo" or "the weight of her suitcase" no longer trigger it. Sample reports unchanged.
+- Tests: literal near-miss and figurative positive cases for `llm-weight-of`.
+
 ## 0.1.1 - 2026-10-21
 
 - New rule `llm-palpable-sense-of` (warn): flags "the tension was palpable" and "a sense of calm washed over her" style emotion labels. 96 rules total.
