@@ -4,6 +4,8 @@
 
 - `llm-weight-of` narrowed to figurative objects (words, world, guilt, grief, it all, and similar), so literal uses like "the weight of the cargo" or "the weight of her suitcase" no longer trigger it. Sample reports unchanged.
 - Tests: literal near-miss and figurative positive cases for `llm-weight-of`.
+- `llm-air-thick-with` no longer flags literal air ("the air was thick with smoke", dust, fog, mist, insects and similar). Mood uses like "thick with tension" still trigger it. Sample reports unchanged.
+- Tests: literal near-miss and mood positive cases for `llm-air-thick-with`.
 
 ## 0.1.1 - 2026-10-21
 

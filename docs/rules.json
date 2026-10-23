@@ -320,7 +320,7 @@
    "type": "pattern",
    "message": "Air thick with tension, heavy with something.",
    "patterns": [
-    "\\bthe air (?:was|felt|grew|hung|became|turned) (?:thick|heavy|electric|charged|taut) (?:with)?\\b",
+    "\\bthe air (?:was|felt|grew|hung|became|turned) (?:thick|heavy|electric|charged|taut)(?! with (?:the )?(?:smoke|dust|fog|mist|steam|smog|pollen|ash|soot|sawdust|spray|sea spray|insects|flies|mosquitoes|midges|gnats|snow|humidity)\\b) (?:with)?\\b",
     "\\b(?:thick|heavy|charged) with (?:tension|anticipation|unspoken|dread|emotion|promise)\\b"
    ],
    "examples": [

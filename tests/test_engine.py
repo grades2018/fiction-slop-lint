@@ -102,6 +102,19 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-weight-of", ids(analyze(text)), text)
 
+    def test_air_thick_with_literal_near_misses(self):
+        for text in [
+            "The air was thick with smoke from the fire.",
+            "The air hung heavy with dust after the blast.",
+            "The air was thick with mosquitoes by the river.",
+        ]:
+            self.assertNotIn("llm-air-thick-with", ids(analyze(text)), text)
+        for text in [
+            "The air was thick with tension.",
+            "The air felt heavy with dread.",
+        ]:
+            self.assertIn("llm-air-thick-with", ids(analyze(text)), text)
+
 class DensityAndMetricTests(unittest.TestCase):
     def test_density_needs_min_words(self):
         short = "He stopped\u2014then ran\u2014and she followed\u2014slowly\u2014into the dark\u2014alone."
