@@ -6,6 +6,8 @@
 - Tests: literal near-miss and figurative positive cases for `llm-weight-of`.
 - `llm-air-thick-with` no longer flags literal air ("the air was thick with smoke", dust, fog, mist, insects and similar). Mood uses like "thick with tension" still trigger it. Sample reports unchanged.
 - Tests: literal near-miss and mood positive cases for `llm-air-thick-with`.
+- `llm-tapestry` now flags only figurative uses ("a tapestry of", "a rich tapestry", "woven into a tapestry"), so a literal wall hanging like "the old tapestry hung in the hall" stays clean. Sample reports unchanged.
+- Tests: literal near-miss and figurative positive cases for `llm-tapestry`; the masking offset test now uses a figurative sentence.
 
 ## 0.1.1 - 2026-10-21
 

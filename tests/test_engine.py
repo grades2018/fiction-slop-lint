@@ -36,11 +36,11 @@ class PatternTests(unittest.TestCase):
         self.assertGreater(rep["files"][0]["words"], 10)
 
     def test_offsets_survive_masking(self):
-        text = "---\nt: x\n---\n\n# Head\n\nThe tapestry hung there.\n"
+        text = "---\nt: x\n---\n\n# Head\n\nIt was a tapestry of lies.\n"
         rep = analyze(text)
-        f = rep["files"][0]["findings"][0]
+        f = [x for x in rep["files"][0]["findings"] if x["rule"] == "llm-tapestry"][0]
         self.assertEqual(f["line"], 7)
-        self.assertEqual(f["column"], 5)
+        self.assertEqual(f["column"], 10)
 
     def test_assistant_leak_is_error(self):
         rep = analyze((FIX / "assistant_leak.txt").read_text(encoding="utf-8"))
@@ -114,6 +114,21 @@ class NearMissTests(unittest.TestCase):
             "The air felt heavy with dread.",
         ]:
             self.assertIn("llm-air-thick-with", ids(analyze(text)), text)
+
+    def test_tapestry_literal_near_misses(self):
+        for text in [
+            "The old tapestry hung in the hall.",
+            "She took the tapestries down to clean them.",
+            "A moth had eaten through the corner of the tapestry.",
+        ]:
+            self.assertNotIn("llm-tapestry", ids(analyze(text)), text)
+        for text in [
+            "The city was a rich tapestry of voices.",
+            "Their lives were woven into a tapestry of grief.",
+            "It was a vibrant tapestry.",
+            "The tapestry of the market changed by the hour.",
+        ]:
+            self.assertIn("llm-tapestry", ids(analyze(text)), text)
 
 class DensityAndMetricTests(unittest.TestCase):
     def test_density_needs_min_words(self):

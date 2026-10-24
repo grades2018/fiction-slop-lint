@@ -192,9 +192,11 @@
    "category": "llm-phrase",
    "severity": "warn",
    "type": "pattern",
-   "message": "'Tapestry' is a frequent figurative filler.",
+   "message": "Figurative 'tapestry' (a tapestry of, a rich tapestry) is a frequent filler.",
    "patterns": [
-    "\\btapestr(?:y|ies)\\b"
+    "\\btapestr(?:y|ies) of\\b",
+    "\\b(?:rich|vibrant|intricate|colou?rful|complex|vast|living|delicate|grand|beautiful|shimmering|tangled|ever-changing) tapestr(?:y|ies)\\b",
+    "\\b(?:woven|weaves?|weaving|wove) (?:into |together )?(?:a |the |an? \\w+ )?tapestr(?:y|ies)\\b"
    ],
    "examples": [
     "The city was a rich tapestry of voices."

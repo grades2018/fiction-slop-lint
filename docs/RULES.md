@@ -5,7 +5,7 @@ Generated with `fiction-slop-lint --list-rules --markdown`. Severity: `error` fo
 | Rule id | Category | Severity | Type | What it flags |
 |---|---|---|---|---|
 | `llm-testament-to` | llm-phrase | warn | pattern | Stock praise phrase. A plain verb usually says it better. |
-| `llm-tapestry` | llm-phrase | warn | pattern | 'Tapestry' is a frequent figurative filler. |
+| `llm-tapestry` | llm-phrase | warn | pattern | Figurative 'tapestry' (a tapestry of, a rich tapestry) is a frequent filler. |
 | `llm-shiver-down-spine` | llm-phrase | warn | pattern | Shiver-down-the-spine beat. |
 | `llm-little-did-she-know` | llm-phrase | warn | pattern | Narrator-wink foreshadowing. |
 | `llm-eyes-sparkled` | llm-phrase | warn | pattern | Sparkling, twinkling or dancing eyes. |
