@@ -8,6 +8,8 @@
 - Tests: literal near-miss and mood positive cases for `llm-air-thick-with`.
 - `llm-tapestry` now flags only figurative uses ("a tapestry of", "a rich tapestry", "woven into a tapestry"), so a literal wall hanging like "the old tapestry hung in the hall" stays clean. Sample reports unchanged.
 - Tests: literal near-miss and figurative positive cases for `llm-tapestry`; the masking offset test now uses a figurative sentence.
+- `llm-symphony-of` now also catches "the symphony of", "the kaleidoscope of" and "the cacophony of" (it only matched the "a ..." form before), while a literal concert or a real kaleidoscope stays clean.
+- Tests: positive and near-miss cases for the "the ..." form of `llm-symphony-of`.
 
 ## 0.1.1 - 2026-10-21
 

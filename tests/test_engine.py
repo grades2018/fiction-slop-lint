@@ -130,6 +130,20 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-tapestry", ids(analyze(text)), text)
 
+    def test_symphony_of_with_the(self):
+        for text in [
+            "The symphony of birds outside woke her.",
+            "The kaleidoscope of feelings would not settle.",
+            "A symphony of smells drifted from the market.",
+        ]:
+            self.assertIn("llm-symphony-of", ids(analyze(text)), text)
+        for text in [
+            "The orchestra played a symphony by Mahler.",
+            "She bought tickets for the symphony on Friday.",
+            "He turned the kaleidoscope toward the window.",
+        ]:
+            self.assertNotIn("llm-symphony-of", ids(analyze(text)), text)
+
 class DensityAndMetricTests(unittest.TestCase):
     def test_density_needs_min_words(self):
         short = "He stopped\u2014then ran\u2014and she followed\u2014slowly\u2014into the dark\u2014alone."

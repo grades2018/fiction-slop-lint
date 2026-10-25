@@ -356,6 +356,7 @@
    "message": "Symphony, kaleidoscope or dance of abstractions.",
    "patterns": [
     "\\ba (?:symphony|kaleidoscope|cacophony|mosaic|tapestry|crescendo) of\\b",
+    "\\bthe (?:symphony|kaleidoscope|cacophony) of\\b",
     "\\bdance of (?:light|shadows?|colou?rs?|emotions?|flames?)\\b"
    ],
    "examples": [
