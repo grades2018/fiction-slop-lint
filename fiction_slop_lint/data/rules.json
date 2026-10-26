@@ -210,8 +210,8 @@
    "type": "pattern",
    "message": "Shiver-down-the-spine beat.",
    "patterns": [
-    "\\b(?:a |the )?(?:shivers?|chill|tingles?) (?:ran|raced|crawled|crept|went|snaked|coursed|trickled|slithered|shot) (?:down|up|through|along)\\b",
-    "\\bsent (?:a )?(?:shivers?|chills?|tingles?) (?:down|up|through|along)\\b"
+    "\\b(?:a |the )?(?:shivers?|chill|tingles?) (?:ran|raced|crawled|crept|went|snaked|coursed|trickled|slithered|shot) (?:down|up|along|through(?! (?:the |its |their |her |his )?(?:hull|deck|decks|floor|floorboards|ground|earth|walls?|frame|beams?|timbers?|structure|building|house|ship|boat|car|truck|plane|aircraft|ice|glass|metal|steel|bridge|rigging|mast|tower|station|train|engine|machine)\\b))\\b",
+    "\\bsent (?:a )?(?:shivers?|chills?|tingles?) (?:down|up|along|through(?! (?:the |its |their |her |his )?(?:hull|deck|decks|floor|floorboards|ground|earth|walls?|frame|beams?|timbers?|structure|building|house|ship|boat|car|truck|plane|aircraft|ice|glass|metal|steel|bridge|rigging|mast|tower|station|train|engine|machine)\\b))\\b"
    ],
    "examples": [
     "A shiver ran down her spine.",

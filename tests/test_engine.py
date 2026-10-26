@@ -130,6 +130,21 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-tapestry", ids(analyze(text)), text)
 
+    def test_shiver_literal_vibration_near_misses(self):
+        for text in [
+            "The ice sent a shiver through the hull of the ship.",
+            "A shiver ran through the deck as the engines started.",
+            "The blast sent a tremor and a shiver through the building.",
+        ]:
+            self.assertNotIn("llm-shiver-down-spine", ids(analyze(text)), text)
+        for text in [
+            "A shiver ran down her spine.",
+            "The noise sent a chill up his back.",
+            "A shiver ran through her.",
+            "His voice sent a chill through the room.",
+        ]:
+            self.assertIn("llm-shiver-down-spine", ids(analyze(text)), text)
+
     def test_symphony_of_with_the(self):
         for text in [
             "The symphony of birds outside woke her.",
