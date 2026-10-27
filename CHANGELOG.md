@@ -12,6 +12,8 @@
 - Tests: positive and near-miss cases for the "the ..." form of `llm-symphony-of`.
 - `llm-shiver-down-spine` no longer flags a literal vibration through an object ("the ice sent a shiver through the hull", "a shiver ran through the deck"). A shiver through a person or a room still triggers it. Sample reports unchanged.
 - Tests: literal near-miss and positive cases for `llm-shiver-down-spine`.
+- `llm-delve` no longer flags literal digging ("the miners delved deeper into the mountain", "delved into the barrow", "delved for gold"). Figurative uses like "delve into the archive" or "delve into the mystery" still trigger it. Sample reports unchanged.
+- Tests: literal near-miss and figurative positive cases for `llm-delve`.
 
 ## 0.1.1 - 2026-10-21
 

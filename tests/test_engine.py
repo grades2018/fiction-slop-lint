@@ -115,6 +115,21 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-air-thick-with", ids(analyze(text)), text)
 
+    def test_delve_literal_digging_near_misses(self):
+        for text in [
+            "The archaeologists delved into the barrow.",
+            "The miners delved deeper into the mountain.",
+            "They delved for gold along the river.",
+            "The dwarves delved beneath the earth for a hundred years.",
+        ]:
+            self.assertNotIn("llm-delve", ids(analyze(text)), text)
+        for text in [
+            "She decided to delve into the archive.",
+            "He delved into the mystery of her past.",
+            "Let us delve deeper into the question.",
+        ]:
+            self.assertIn("llm-delve", ids(analyze(text)), text)
+
     def test_tapestry_literal_near_misses(self):
         for text in [
             "The old tapestry hung in the hall.",

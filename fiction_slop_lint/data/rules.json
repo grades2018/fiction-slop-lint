@@ -293,7 +293,7 @@
    "type": "pattern",
    "message": "'Delve' is a very frequent assistant-style verb.",
    "patterns": [
-    "\\bdelv(?:e|es|ed|ing)\\b"
+    "\\bdelv(?:e|es|ed|ing)\\b(?! (?:(?:deeper|further|down) )?(?:into|in|under|beneath|through) (?:the |a |an |that |this )?(?:earth|soil|ground|dirt|mud|clay|sand|peat|rock|rubble|mine|mines|mountain|mountainside|hillside|cave|cavern|tunnel|barrow|mound|tomb|crypt|grave|seam|shaft|pit|quarry|bog|riverbank|garden)\\b)(?! for (?:gold|silver|iron|ore|coal|gems|tin|copper|water|roots|worms|treasure)\\b)"
    ],
    "examples": [
     "She decided to delve into the archive."
