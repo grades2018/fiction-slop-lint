@@ -14,6 +14,8 @@
 - Tests: literal near-miss and positive cases for `llm-shiver-down-spine`.
 - `llm-delve` no longer flags literal digging ("the miners delved deeper into the mountain", "delved into the barrow", "delved for gold"). Figurative uses like "delve into the archive" or "delve into the mystery" still trigger it. Sample reports unchanged.
 - Tests: literal near-miss and figurative positive cases for `llm-delve`.
+- `body-stomach` no longer flags every mention of butterflies. Literal insects ("butterflies drifted over the meadow", "pinned the butterflies into the display case") stay clean, while "had butterflies", "gave her butterflies" and "butterflies in her stomach" still trigger it. Sample reports unchanged.
+- Tests: literal near-miss and figurative positive cases for the butterflies patterns in `body-stomach`.
 
 ## 0.1.1 - 2026-10-21
 

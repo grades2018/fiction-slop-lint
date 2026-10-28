@@ -130,6 +130,21 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-delve", ids(analyze(text)), text)
 
+    def test_butterflies_literal_near_misses(self):
+        for text in [
+            "Butterflies drifted over the meadow all afternoon.",
+            "She pinned the butterflies into the display case.",
+            "A cloud of white butterflies rose from the lavender.",
+        ]:
+            self.assertNotIn("body-stomach", ids(analyze(text)), text)
+        for text in [
+            "He had butterflies before the speech.",
+            "Butterflies swirled in her stomach.",
+            "Her stomach was full of butterflies.",
+            "Seeing him again gave her butterflies.",
+        ]:
+            self.assertIn("body-stomach", ids(analyze(text)), text)
+
     def test_tapestry_literal_near_misses(self):
         for text in [
             "The old tapestry hung in the hall.",

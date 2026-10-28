@@ -759,7 +759,9 @@
    "patterns": [
     "\\bstomach (?:dropped|churned|twisted|knotted|flipped|clenched|lurched|tightened|fluttered|sank|turned)\\b",
     "\\bpit of (?:his|her|my|their) stomach\\b",
-    "\\bbutterflies\\b",
+    "\\bbutterflies\\b(?=[^.!?\\n]{0,30}\\b(?:stomach|belly|gut|tummy)\\b)",
+    "\\b(?:stomach|belly|gut|tummy) (?:was |felt |were )?(?:full of|filled with|alive with|aflutter with) butterflies\\b",
+    "\\b(?:had|has|have|got|gets|get|getting|having|felt|feel|feels|feeling|gave (?:me|him|her|them|us|you)) (?:the |a few |some )?butterflies\\b",
     "\\b(?:gut|stomach) (?:in|into) knots\\b"
    ],
    "examples": [
