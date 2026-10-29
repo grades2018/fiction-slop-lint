@@ -613,7 +613,9 @@
    "message": "Over-poetic words for ordinary things.",
    "patterns": [
     "\\bministrations\\b",
-    "\\borbs\\b",
+    "\\b(?:her|his|their|my|your|its)\\s+(?:(?!glass\\b|crystal\\b|brass\\b|paper\\b|lantern\\b|silver\\b|golden\\b|gold\\b)[a-z]+\\s+)?orbs\\b",
+    "\\b(?:blue|green|grey|gray|brown|hazel|amber|emerald|sapphire|azure|cerulean|violet|chocolate|obsidian|onyx|jade|cobalt|ebony)\\s+orbs\\b",
+    "\\borbs\\s+(?:met|found|locked|narrowed|widened|flashed|glistened|sparkled|bored|searched|darkened|softened)\\b",
     "\\bmolten (?:gold|silver|eyes|gaze)\\b",
     "\\bsmoldering gaze\\b",
     "\\bcrystalline\\b"

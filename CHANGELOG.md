@@ -16,6 +16,8 @@
 - Tests: literal near-miss and figurative positive cases for `llm-delve`.
 - `body-stomach` no longer flags every mention of butterflies. Literal insects ("butterflies drifted over the meadow", "pinned the butterflies into the display case") stay clean, while "had butterflies", "gave her butterflies" and "butterflies in her stomach" still trigger it. Sample reports unchanged.
 - Tests: literal near-miss and figurative positive cases for the butterflies patterns in `body-stomach`.
+- `llm-ministrations-orbs` no longer flags every "orbs". Literal objects ("glass orbs hung from the ceiling", "the brass orbs on the bedposts", "three orbs floated above the altar") stay clean, while orbs used for eyes ("her orbs found his", "his emerald orbs narrowed", "their orbs met") still trigger it. Sample reports unchanged.
+- Tests: literal near-miss and eye-sense positive cases for `llm-ministrations-orbs`.
 
 ## 0.1.1 - 2026-10-21
 

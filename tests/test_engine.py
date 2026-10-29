@@ -130,6 +130,22 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-delve", ids(analyze(text)), text)
 
+    def test_orbs_literal_near_misses(self):
+        for text in [
+            "Glass orbs hung from the ceiling of the tavern.",
+            "She polished the brass orbs on the bedposts.",
+            "Three orbs floated above the altar.",
+            "Her glass orbs caught the light.",
+        ]:
+            self.assertNotIn("llm-ministrations-orbs", ids(analyze(text)), text)
+        for text in [
+            "Her orbs found his.",
+            "His emerald orbs narrowed.",
+            "She stared into his deep blue orbs.",
+            "Their orbs met across the room.",
+        ]:
+            self.assertIn("llm-ministrations-orbs", ids(analyze(text)), text)
+
     def test_butterflies_literal_near_misses(self):
         for text in [
             "Butterflies drifted over the meadow all afternoon.",
