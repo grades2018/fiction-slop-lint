@@ -633,7 +633,9 @@
    "message": "Intricate web, labyrinth, dance.",
    "patterns": [
     "\\bintricate (?:web|dance|network|maze|tapestry|patterns?)\\b",
-    "\\blabyrinth(?:ine)?\\b",
+    "\\blabyrinthine\\b",
+   "\\ba labyrinth of\\b",
+   "\\bthe labyrinths? of (?:(?:his|her|their|my|your|its|the) )?(?:mind|thoughts|memor(?:y|ies)|emotions|feelings|grief|dreams|lies|secrets|deceit|intrigue|bureaucracy|rules)\\b",
     "\\bweb of (?:lies|intrigue|deceit|secrets|connections)\\b"
    ],
    "examples": [

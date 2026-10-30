@@ -18,6 +18,8 @@
 - Tests: literal near-miss and figurative positive cases for the butterflies patterns in `body-stomach`.
 - `llm-ministrations-orbs` no longer flags every "orbs". Literal objects ("glass orbs hung from the ceiling", "the brass orbs on the bedposts", "three orbs floated above the altar") stay clean, while orbs used for eyes ("her orbs found his", "his emerald orbs narrowed", "their orbs met") still trigger it. Sample reports unchanged.
 - Tests: literal near-miss and eye-sense positive cases for `llm-ministrations-orbs`.
+- `llm-intricate-labyrinth` no longer flags every "labyrinth". A literal maze ("the minotaur prowled the labyrinth", "the hedge labyrinth behind the manor") stays clean, while "a labyrinth of lies", "the labyrinth of her thoughts" and "labyrinthine" still trigger it. Sample reports unchanged.
+- Tests: literal near-miss and figurative positive cases for `llm-intricate-labyrinth`.
 
 ## 0.1.1 - 2026-10-21
 

@@ -146,6 +146,20 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-ministrations-orbs", ids(analyze(text)), text)
 
+    def test_labyrinth_literal_near_misses(self):
+        for text in [
+            "The minotaur prowled the labyrinth beneath the palace.",
+            "They walked the hedge labyrinth behind the manor.",
+            "The labyrinth had seven turns and one exit.",
+        ]:
+            self.assertNotIn("llm-intricate-labyrinth", ids(analyze(text)), text)
+        for text in [
+            "The court was a labyrinth of lies.",
+            "She was lost in the labyrinth of her thoughts.",
+            "The halls were labyrinthine and cold.",
+        ]:
+            self.assertIn("llm-intricate-labyrinth", ids(analyze(text)), text)
+
     def test_butterflies_literal_near_misses(self):
         for text in [
             "Butterflies drifted over the meadow all afternoon.",
