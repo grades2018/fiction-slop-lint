@@ -1,4 +1,4 @@
-fiction-slop-lint 0.1.1 - a style linter for fiction. Not an AI detector.
+fiction-slop-lint 0.1.2 - a style linter for fiction. Not an AI detector.
 
 examples/03-three-chapters.md  (304 words, 42 sentences, 7 findings)
   3:1      info  rhythm-paragraph-monotony          6 paragraphs averaging 50.7 words with little variation (cv 0.09)

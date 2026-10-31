@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fiction-slop-lint"
-version = "0.1.1"
+version = "0.1.2"
 description = "Offline style linter for fiction manuscripts: flags cliches, overused phrases, repetition and rhythm habits. Not an AI detector."
 readme = "README.md"
 requires-python = ">=3.9"
