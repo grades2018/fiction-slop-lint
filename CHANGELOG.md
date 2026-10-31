@@ -2,7 +2,7 @@
 
 ## 0.1.2 - 2026-10-31
 
-False positive fixes: seven rules now skip literal uses and keep flagging the figurative ones. Rule count is unchanged at 97.
+False positive fixes: eight rules now skip literal uses and keep flagging the figurative ones, and `llm-symphony-of` catches one more form. Rule count is unchanged at 97.
 
 - Version bumped to 0.1.2 (CLI, browser version, SKILL.md, sample reports); the CI example now pins `@v0.1.2`.
 - `llm-weight-of` narrowed to figurative objects (words, world, guilt, grief, it all, and similar), so literal uses like "the weight of the cargo" or "the weight of her suitcase" no longer trigger it. Sample reports unchanged.
