@@ -160,6 +160,24 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-intricate-labyrinth", ids(analyze(text)), text)
 
+    def test_electric_touch_literal_near_misses(self):
+        for text in [
+            "Electricity ran through the old wires in the barn.",
+            "The storm knocked out the electricity across the valley.",
+            "A jolt of electricity from the fence knocked him back.",
+            "Electricity hummed through her house all night.",
+            "His hand burned where the stove had caught it.",
+        ]:
+            self.assertNotIn("body-electric-touch", ids(analyze(text)), text)
+        for text in [
+            "When their hands brushed, a jolt of electricity shot up her arm.",
+            "Electricity crackled between them.",
+            "Electricity shot through her, and she stepped back.",
+            "His touch sent sparks along her skin.",
+            "Her wrist burned where his fingers had touched.",
+        ]:
+            self.assertIn("body-electric-touch", ids(analyze(text)), text)
+
     def test_butterflies_literal_near_misses(self):
         for text in [
             "Butterflies drifted over the meadow all afternoon.",

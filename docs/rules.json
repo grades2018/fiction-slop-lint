@@ -634,8 +634,8 @@
    "patterns": [
     "\\bintricate (?:web|dance|network|maze|tapestry|patterns?)\\b",
     "\\blabyrinthine\\b",
-   "\\ba labyrinth of\\b",
-   "\\bthe labyrinths? of (?:(?:his|her|their|my|your|its|the) )?(?:mind|thoughts|memor(?:y|ies)|emotions|feelings|grief|dreams|lies|secrets|deceit|intrigue|bureaucracy|rules)\\b",
+    "\\ba labyrinth of\\b",
+    "\\bthe labyrinths? of (?:(?:his|her|their|my|your|its|the) )?(?:mind|thoughts|memor(?:y|ies)|emotions|feelings|grief|dreams|lies|secrets|deceit|intrigue|bureaucracy|rules)\\b",
     "\\bweb of (?:lies|intrigue|deceit|secrets|connections)\\b"
    ],
    "examples": [
@@ -879,6 +879,26 @@
     "The hair on the back of his neck stood up."
    ],
    "suggestion": "Cut or make it specific to the scene."
+  },
+  {
+   "id": "body-electric-touch",
+   "category": "body-cliche",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "Touch that sends electricity, sparks or a jolt through a character.",
+   "patterns": [
+    "\\b(?:jolts?|surges?|sparks?|currents?|bolts?|zings?) of (?:electricity|heat|awareness) (?:shot|ran|raced|surged|coursed|went|spread|crackled|zipped|zinged|skittered|sizzled) (?:up|down|through|across|along) (?:her|his|my|their|your) (?:arm|arms|spine|body|veins|skin|fingers|hand|hands|chest|back|wrist|neck|core)\\b",
+    "\\belectricity (?:shot|ran|raced|surged|coursed|crackled|zipped|zinged|hummed|sizzled|sparked) (?:(?:up|down|through|across|along) (?:her|his|my|their|your) (?:arm|arms|spine|body|veins|skin|fingers|hand|hands|chest|back|wrist|neck|core)|through (?:him|her|me|them|us)(?=\\s*(?:[,.;!?]|$|and\\b|as\\b|when\\b|at\\b))|between (?:them|us|the two of them))",
+    "\\bsent (?:a )?(?:jolts?|sparks?|shocks?|a current|electricity|zings?) (?:of (?:electricity|heat|awareness) )?(?:up|down|through|across|along) (?:her|his|my|their|your) (?:arm|arms|spine|body|veins|skin|fingers|hand|hands|chest|back|wrist|neck|core)\\b",
+    "\\b(?:arm|hand|wrist|fingers|palm|cheek|lips|mouth) (?:tingled|burned|sizzled|buzzed|hummed) where (?:his|her|their|my|your) (?:fingers|hand|hands|lips|skin|mouth|thumb) (?:had )?(?:touched|brushed|grazed|been)\\b"
+   ],
+   "examples": [
+    "When their hands brushed, a jolt of electricity shot up her arm.",
+    "Electricity crackled between them.",
+    "His touch sent sparks along her skin.",
+    "Her wrist burned where his fingers had touched."
+   ],
+   "suggestion": "Name the specific, physical thing the touch changes, or let the character react in a choice instead of a current."
   },
   {
    "id": "body-tears",

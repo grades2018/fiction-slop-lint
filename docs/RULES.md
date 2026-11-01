@@ -46,6 +46,7 @@ Generated with `fiction-slop-lint --list-rules --markdown`. Severity: `error` fo
 | `body-hand-hair` | body-cliche | warn | pattern | Running a hand through hair or down the face. |
 | `body-throat-lump` | body-cliche | warn | pattern | Swallowing hard, lump in the throat. |
 | `body-chill-goosebumps` | body-cliche | warn | pattern | Goosebumps, chills, raised neck hairs. |
+| `body-electric-touch` | body-cliche | warn | pattern | Touch that sends electricity, sparks or a jolt through a character. |
 | `body-tears` | body-cliche | warn | pattern | Tears pricking, welling or spilling. |
 | `body-tired-gestures` | body-cliche | info | pattern | Pinching the nose bridge, rubbing the temples. |
 | `body-time-stopped` | body-cliche | warn | pattern | Time slowing or the world falling away. |
@@ -102,4 +103,4 @@ Generated with `fiction-slop-lint --list-rules --markdown`. Severity: `error` fo
 | `rhythm-one-line-paragraphs` | rhythm | info | metric | Large share of one-sentence narrative paragraphs. |
 | `rhythm-punchline-endings` | rhythm | warn | metric | Many paragraphs end on a very short punch sentence after a long one. |
 
-97 rules in 9 categories.
+98 rules in 9 categories.

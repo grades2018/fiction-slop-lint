@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- New rule `body-electric-touch` (warn): flags touch that sends a jolt of electricity up an arm, electricity crackling between two characters, sparks sent along skin, or a wrist burning where fingers touched. Literal electricity (wires, a fence, a power cut, a hot stove) stays clean. 98 rules total, body-cliche now 19. Sample reports unchanged.
+- Tests: literal near-miss and positive cases for `body-electric-touch`.
+
 ## 0.1.2 - 2026-10-31
 
 False positive fixes: eight rules now skip literal uses and keep flagging the figurative ones, and `llm-symphony-of` catches one more form. Rule count is unchanged at 97.
