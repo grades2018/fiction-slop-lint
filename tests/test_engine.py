@@ -160,6 +160,26 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-intricate-labyrinth", ids(analyze(text)), text)
 
+    def test_uniquely_him_near_misses(self):
+        for text in [
+            "She had something of her own to say.",
+            "It was something so heavy that he dropped it.",
+            "She wanted something all her own: a room.",
+            "Every inch of the garden was covered in frost.",
+            "Every cell in the spreadsheet was empty.",
+            "The scent of pine drifted in through the window.",
+        ]:
+            self.assertNotIn("llm-uniquely-him", ids(analyze(text)), text)
+        for text in [
+            "He smelled of sandalwood and something uniquely him.",
+            "The scent of pine and something distinctly him.",
+            "It was something so her, he laughed.",
+            "a musk that was purely him",
+            "Every fiber of her being screamed at her to run.",
+            "Every fibre of his being wanted to stay.",
+        ]:
+            self.assertIn("llm-uniquely-him", ids(analyze(text)), text)
+
     def test_electric_touch_literal_near_misses(self):
         for text in [
             "Electricity ran through the old wires in the barn.",

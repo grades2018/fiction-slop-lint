@@ -644,6 +644,23 @@
    "suggestion": "Say what exactly tangles."
   },
   {
+   "id": "llm-uniquely-him",
+   "category": "llm-phrase",
+   "severity": "warn",
+   "type": "pattern",
+   "message": "'Something uniquely him' or 'every fiber of her being' standing in for a real detail.",
+   "patterns": [
+    "\\bsomething (?:that was )?(?:uniquely|distinctly|purely|entirely|undeniably|unmistakably|indefinably|so) (?:him|her|them)(?=\\s*(?:[,.;:!?)\"'\\u201d\\u2019]|$|and\\b|that\\b))",
+    "\\b(?:scent|smell|musk|taste) (?:that was )?(?:uniquely|distinctly|purely|entirely|unmistakably) (?:him|her|his|hers|his own|her own)\\b",
+    "\\bevery (?:fib(?:er|re)|cell|nerve|ounce|inch) of (?:her|his|my|their|your|our) being\\b"
+   ],
+   "examples": [
+    "He smelled of sandalwood and something uniquely him.",
+    "Every fiber of her being screamed at her to run."
+   ],
+   "suggestion": "Name the actual smell, habit or urge."
+  },
+  {
    "id": "llm-assistant-leak",
    "category": "llm-phrase",
    "severity": "error",

@@ -33,6 +33,7 @@ Generated with `fiction-slop-lint --list-rules --markdown`. Severity: `error` fo
 | `llm-stock-place-names` | llm-phrase | info | pattern | Place names that language models reach for by default. |
 | `llm-ministrations-orbs` | llm-phrase | info | pattern | Over-poetic words for ordinary things. |
 | `llm-intricate-labyrinth` | llm-phrase | info | pattern | Intricate web, labyrinth, dance. |
+| `llm-uniquely-him` | llm-phrase | warn | pattern | 'Something uniquely him' or 'every fiber of her being' standing in for a real detail. |
 | `llm-assistant-leak` | llm-phrase | error | pattern | Chatbot or editing-prompt text left in the manuscript. |
 | `llm-meta-narration` | llm-phrase | warn | pattern | Narrator addressing the reader or announcing the theme. |
 | `body-heartbeat` | body-cliche | warn | pattern | Heart pounding, racing or skipping. |
@@ -103,4 +104,4 @@ Generated with `fiction-slop-lint --list-rules --markdown`. Severity: `error` fo
 | `rhythm-one-line-paragraphs` | rhythm | info | metric | Large share of one-sentence narrative paragraphs. |
 | `rhythm-punchline-endings` | rhythm | warn | metric | Many paragraphs end on a very short punch sentence after a long one. |
 
-98 rules in 9 categories.
+99 rules in 9 categories.

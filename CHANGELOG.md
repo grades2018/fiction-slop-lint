@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- New rule `llm-uniquely-him` (warn): flags "something uniquely him", "a scent that was purely her" and "every fiber of her being", which stand in for a real smell, habit or urge. Phrases like "something of her own" and "every inch of the garden" stay clean. 99 rules total, llm-phrase now 32. Sample reports unchanged.
+- Tests: near-miss and positive cases for `llm-uniquely-him`.
 - New rule `body-electric-touch` (warn): flags touch that sends a jolt of electricity up an arm, electricity crackling between two characters, sparks sent along skin, or a wrist burning where fingers touched. Literal electricity (wires, a fence, a power cut, a hot stove) stays clean. 98 rules total, body-cliche now 19. Sample reports unchanged.
 - Tests: literal near-miss and positive cases for `body-electric-touch`.
 
