@@ -747,7 +747,8 @@
    "patterns": [
     "\\bjaw (?:clenched|tightened|tensed|ticked|set|worked|flexed)\\b",
     "\\b(?:clenched|tightened|set|flexed|tensed|squared) (?:his|her|their) jaw\\b",
-    "\\bmuscle (?:in|along|at) (?:his|her) jaw\\b"
+    "\\bmuscle (?:in|along|at) (?:his|her|their) jaw\\b",
+    "\\bmuscle (?:ticked|jumped|twitched|feathered|flexed|pulsed|throbbed|leapt|leaped|worked|tightened|clenched|spasmed|tensed) (?:in|along|at) (?:his|her|their) jaw\\b"
    ],
    "examples": [
     "His jaw clenched.",

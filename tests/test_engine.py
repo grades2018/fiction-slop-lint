@@ -160,6 +160,23 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("llm-intricate-labyrinth", ids(analyze(text)), text)
 
+    def test_jaw_muscle_verbs(self):
+        for text in [
+            "A muscle cramp seized his calf.",
+            "The muscle ticked over like an old engine.",
+            "She pulled a muscle in her back.",
+            "He worked the stiffness out of his shoulder.",
+        ]:
+            self.assertNotIn("body-jaw", ids(analyze(text)), text)
+        for text in [
+            "A muscle ticked in his jaw.",
+            "A muscle jumped along her jaw.",
+            "A muscle feathered in his jaw as he listened.",
+            "A muscle twitched at their jaw.",
+            "The muscle in his jaw worked.",
+        ]:
+            self.assertIn("body-jaw", ids(analyze(text)), text)
+
     def test_uniquely_him_near_misses(self):
         for text in [
             "She had something of her own to say.",
