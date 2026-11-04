@@ -177,6 +177,23 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("body-jaw", ids(analyze(text)), text)
 
+    def test_hand_hair_verbs(self):
+        for text in [
+            "She raked the gravel path smooth.",
+            "He dragged his hands through the cold stream.",
+            "He shoved his hands into his pockets.",
+            "She ran a comb through her hair.",
+        ]:
+            self.assertNotIn("body-hand-hair", ids(analyze(text)), text)
+        for text in [
+            "He raked a hand through his hair.",
+            "She dragged her fingers through her hair.",
+            "He scrubbed a hand over his face.",
+            "I shoved both hands through my hair.",
+            "He ran a hand through his hair.",
+        ]:
+            self.assertIn("body-hand-hair", ids(analyze(text)), text)
+
     def test_uniquely_him_near_misses(self):
         for text in [
             "She had something of her own to say.",

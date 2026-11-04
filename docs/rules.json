@@ -851,7 +851,7 @@
    "type": "pattern",
    "message": "Running a hand through hair or down the face.",
    "patterns": [
-    "\\bran (?:a |his |her |their )?(?:hand|hands|fingers) (?:through|over|across|along) (?:his|her|their) (?:hair|face|scalp|jaw|neck)\\b",
+    "\\b(?:ran|runs|running|raked|rakes|raking|dragged|drags|dragging|shoved|scrubbed) (?:a |his |her |their |my |both )?(?:hand|hands|fingers) (?:through|over|across|along) (?:his|her|their|my) (?:hair|face|scalp|jaw|neck)\\b",
     "\\bran a (?:hand|palm) down (?:his|her|their) face\\b",
     "\\btucked (?:a |the )?(?:strand|lock|loose strand|wisp) of hair\\b",
     "\\bpush(?:ed)? (?:a )?(?:strand|lock) of hair\\b"

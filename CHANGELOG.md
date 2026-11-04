@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `body-hand-hair` now also catches "raked a hand through his hair" and the dragged, shoved and scrubbed variants (it only matched "ran" before), plus first person ("my hair"). Raking gravel, hands dragged through a stream, hands shoved into pockets and a comb run through hair stay clean. Rule count unchanged at 99.
+- Tests: near-miss and positive cases for the new verbs in `body-hand-hair`.
+
 - `body-jaw` now also catches "a muscle ticked in his jaw" and the jumped, twitched and feathered variants (it only matched "muscle in his jaw" before), and accepts "their jaw". A pulled muscle or a muscle cramp elsewhere stays clean. Rule count unchanged at 99.
 - Tests: near-miss and positive cases for the muscle verbs in `body-jaw`.
 - New rule `llm-uniquely-him` (warn): flags "something uniquely him", "a scent that was purely her" and "every fiber of her being", which stand in for a real smell, habit or urge. Phrases like "something of her own" and "every inch of the garden" stay clean. 99 rules total, llm-phrase now 32. Sample reports unchanged.
