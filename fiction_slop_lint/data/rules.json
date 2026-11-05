@@ -962,13 +962,14 @@
    "message": "Time slowing or the world falling away.",
    "patterns": [
     "\\btime (?:seemed to )?(?:slow|stop|stand still|freeze|stretch|crawl)\\b",
-    "\\bthe world (?:around (?:her|him|them) )?(?:seemed to )?(?:fell away|narrowed|faded|stopped|slowed|tilted|shrank|blurred)\\b",
+    "\\bthe world (?:around (?:her|him|them) )?(?:seemed to (?:fall away|narrow|fade|stop|slow|tilt|shrink|blur)|(?:fell away|narrowed|faded|stopped|slowed|tilted|shrank|blurred))(?: around (?:her|him|them))?\\b",
     "\\bfroze (?:in place|on the spot|mid-\\w+)\\b",
     "\\bevery(?:thing| other thing) else (?:faded|fell away)\\b"
    ],
    "examples": [
     "Time seemed to slow.",
-    "The world fell away."
+    "The world fell away.",
+    "The world seemed to stop."
    ],
    "suggestion": "Use sparingly, once per book at most."
   },

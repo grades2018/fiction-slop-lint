@@ -194,6 +194,25 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("body-hand-hair", ids(analyze(text)), text)
 
+    def test_world_seemed_to_stop(self):
+        for text in [
+            "Around the world, traffic stopped.",
+            "The natural world kept expanding.",
+            "In a world that stopped caring, she kept going.",
+            "She seemed to stop beside the world map.",
+        ]:
+            self.assertNotIn("body-time-stopped", ids(analyze(text)), text)
+        for text in [
+            "The world seemed to stop.",
+            "The world around her seemed to stop.",
+            "The world seemed to stop around her.",
+            "The world seemed to fall away.",
+            "The world seemed to fade.",
+            "The world stopped.",
+            "The world fell away.",
+        ]:
+            self.assertIn("body-time-stopped", ids(analyze(text)), text)
+
     def test_uniquely_him_near_misses(self):
         for text in [
             "She had something of her own to say.",

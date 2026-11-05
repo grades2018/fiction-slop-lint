@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `body-time-stopped` now also catches "the world seemed to stop" and the fade, fall away, narrow, slow, tilt, shrink and blur infinitives after "seemed to" (it only matched past-tense world verbs before), plus a trailing "around her/him/them". "Around the world, traffic stopped", "the natural world" and "a world that stopped caring" stay clean. Rule count unchanged at 99.
+- Tests: near-miss and positive cases for the "seemed to" world forms in `body-time-stopped`.
+
 - `body-hand-hair` now also catches "raked a hand through his hair" and the dragged, shoved and scrubbed variants (it only matched "ran" before), plus first person ("my hair"). Raking gravel, hands dragged through a stream, hands shoved into pockets and a comb run through hair stay clean. Rule count unchanged at 99.
 - Tests: near-miss and positive cases for the new verbs in `body-hand-hair`.
 
