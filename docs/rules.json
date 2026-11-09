@@ -710,7 +710,7 @@
    "message": "Heart pounding, racing or skipping.",
    "patterns": [
     "\\b(?:her|his|their|my|the) hearts? (?:pounded|hammered|thundered|raced|skipped a beat|leapt|leaped|stuttered|fluttered|clenched|sank|dropped|lurched|thudded|drummed|pounding|racing)\\b",
-    "\\bheart in (?:her|his|their|my) (?:throat|chest|mouth)\\b",
+    "\\b(?:her|his|their|my|the) hearts? (?:did|gave|made) (?:a|an) (?:little |small |funny |sudden |sharp )?(?:flip|flip-flop|somersault|lurch|leap|skip|stutter|jolt|hiccup)\\b", "\\bheart in (?:her|his|their|my) (?:throat|chest|mouth)\\b",
     "\\bpulse (?:pounded|raced|quickened|roared|thrummed|jumped)\\b"
    ],
    "examples": [

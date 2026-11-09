@@ -213,6 +213,20 @@ class NearMissTests(unittest.TestCase):
         ]:
             self.assertIn("body-time-stopped", ids(analyze(text)), text)
 
+    def test_heart_flip(self):
+        for text in [
+            "The pancake did a flip in the pan.",
+            "The heart of the city gave a little to the tourists.",
+            "The gymnast did a flip.",
+        ]:
+            self.assertNotIn("body-heartbeat", ids(analyze(text)), text)
+        for text in [
+            "Her heart did a little flip.",
+            "His heart gave a lurch.",
+            "My heart did a somersault.",
+        ]:
+            self.assertIn("body-heartbeat", ids(analyze(text)), text)
+
     def test_uniquely_him_near_misses(self):
         for text in [
             "She had something of her own to say.",

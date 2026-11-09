@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `body-heartbeat` now also catches "her heart did a little flip" and the gave a lurch, did a somersault and similar forms. Pancake flips and gymnast flips stay clean. Rule count unchanged at 99.
+- Tests: near-miss and positive cases for the heart flip forms.
+
 - `body-time-stopped` now also catches "the world seemed to stop" and the fade, fall away, narrow, slow, tilt, shrink and blur infinitives after "seemed to" (it only matched past-tense world verbs before), plus a trailing "around her/him/them". "Around the world, traffic stopped", "the natural world" and "a world that stopped caring" stay clean. Rule count unchanged at 99.
 - Tests: near-miss and positive cases for the "seemed to" world forms in `body-time-stopped`.
 
