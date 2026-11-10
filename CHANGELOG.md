@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 (2026-11-10)
 
 - `body-heartbeat` now also catches "her heart did a little flip" and the gave a lurch, did a somersault and similar forms. Pancake flips and gymnast flips stay clean. Rule count unchanged at 99.
 - Tests: near-miss and positive cases for the heart flip forms.
