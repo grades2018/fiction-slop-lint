@@ -144,6 +144,10 @@ The tests cover the rules file (every pattern rule must match its own examples),
 
 Layout: `fiction_slop_lint/` (package and `data/rules.json`), `docs/` (GitHub Pages site, same rules), `examples/`, `tests/`, `SKILL.md`.
 
+## See also
+
+- [Awesome Lists for Writers and Self-Publishers](https://github.com/grades2018/awesome-lists-for-writers) - curated lists of writing, editing, and publishing tools.
+
 ## License
 
 [MIT](LICENSE).
